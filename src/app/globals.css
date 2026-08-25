@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --bg-dark: #0B0B0D;
+  --bg-dark-card: #141318;
+  --gold-accent: #D4AF37;
+  --bronze-accent: #C5A880;
+  --cream-light: #FDFBF7;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #FDFBF7;
+  color: #1A1817;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Rejuvita Luxury Overlay & Background Gradients */
+.rejuvita-radial-overlay {
+  background-image: radial-gradient(at center center, rgba(11, 11, 13, 0) 0%, #0B0B0D 100%);
+}
+
+.rejuvita-dark-section {
+  background-color: #0B0B0D;
+  color: #FDFBF7;
+}
+
+.rejuvita-card-dark {
+  background: rgba(20, 19, 24, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.22);
+}
+
+.glass-panel {
+  background: rgba(253, 251, 247, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+/* Gold Shimmer & Luxury Text Effects */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #B89326 0%, #D4AF37 40%, #E5C978 70%, #917117 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #D4AF37 0%, #C5A880 50%, #B89326 100%);
+}
+
+.gold-border-glow {
+  box-shadow: 0 0 30px -5px rgba(212, 175, 55, 0.3);
+}
+
+/* Infinite Marquee Ticker Animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: 200%;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Rejuvita Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FDFBF7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C5A880;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D4AF37;
+}

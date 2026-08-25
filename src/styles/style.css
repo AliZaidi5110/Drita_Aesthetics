@@ -1,0 +1,24 @@
+@charset "UTF-8";
+/*
+Theme Name: Rejuvita
+Theme URI: https://rejuvita.cmsmasters.net/
+Author: cmsmasters
+Author URI: https://cmsmasters.net/
+Description: Rejuvita – Plastic Surgery & Beauty Medical Clinic WordPress Theme for Elementor is a complete solution for aesthetic care and cosmetic medical websites. Designed with a clean, modern style and built-in medical-focused functionality, it allows you to create a professional website for a plastic surgery practice or beauty medical clinic with ease. The theme includes custom post types for presenting Medical Services and detailed Doctor Profiles in a clear and structured way.
+Version: 1.0.0
+Tested up to: 6.6
+Requires PHP: 7.4
+License:
+License URI:
+Text Domain: rejuvita
+Domain Path: /theme-config/languages
+Copyright: cmsmasters 2025 / All Rights Reserved
+Tags: one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-image-header, featured-images, flexible-header, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
+*/
+
+
+.sticky,
+.bypostauthor,
+.screen-reader-text {
+  outline: none;
+}

@@ -1,0 +1,93 @@
+@font-face {
+  font-family: 'Local-Icons';
+  src:  url('fonts/Local-Icons.eot?emlkef');
+  src:  url('fonts/Local-Icons.eot?emlkef#iefix') format('embedded-opentype'),
+    url('fonts/Local-Icons.ttf?emlkef') format('truetype'),
+    url('fonts/Local-Icons.woff?emlkef') format('woff'),
+    url('fonts/Local-Icons.svg?emlkef#Local-Icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="cmsms-demo-icon-"], [class*=" cmsms-demo-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'Local-Icons' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.cmsms-demo-icon-arrow-left:before {
+  content: "\e900";
+}
+.cmsms-demo-icon-arrow-right:before {
+  content: "\e901";
+}
+.cmsms-demo-icon-cancel:before {
+  content: "\e902";
+}
+.cmsms-demo-icon-cart:before {
+  content: "\e903";
+}
+.cmsms-demo-icon-date:before {
+  content: "\e904";
+}
+.cmsms-demo-icon-dropdown-down:before {
+  content: "\e905";
+}
+.cmsms-demo-icon-dropdown-up:before {
+  content: "\e906";
+}
+.cmsms-demo-icon-email:before {
+  content: "\e907";
+}
+.cmsms-demo-icon-location:before {
+  content: "\e908";
+}
+.cmsms-demo-icon-menu:before {
+  content: "\e909";
+}
+.cmsms-demo-icon-minus:before {
+  content: "\e90a";
+}
+.cmsms-demo-icon-phone:before {
+  content: "\e90b";
+}
+.cmsms-demo-icon-play:before {
+  content: "\e90c";
+}
+.cmsms-demo-icon-plus:before {
+  content: "\e90d";
+}
+.cmsms-demo-icon-rejuvita:before {
+  content: "\e90e";
+}
+.cmsms-demo-icon-scrubber:before {
+  content: "\e90f";
+}
+.cmsms-demo-icon-search:before {
+  content: "\e910";
+}
+.cmsms-demo-icon-star:before {
+  content: "\e911";
+}
+.cmsms-demo-icon-tick:before {
+  content: "\e912";
+}
+.cmsms-demo-icon-time:before {
+  content: "\e913";
+}
+.cmsms-demo-icon-toggle-down:before {
+  content: "\e914";
+}
+.cmsms-demo-icon-toggle-up:before {
+  content: "\e915";
+}

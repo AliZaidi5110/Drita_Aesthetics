@@ -72,7 +72,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           {/* Brand Logo */}
-          <a href="#" className="flex flex-col group">
+          <a href="/" className="flex flex-col group">
             <span className="font-serif text-xl sm:text-2xl font-bold tracking-wider text-charcoal-900 group-hover:text-gold-600 transition-colors">
               DRITA'S
             </span>
@@ -83,25 +83,25 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
 
           {/* Desktop Nav Links */}
           <nav className="hidden lg:flex items-center space-x-8 text-sm font-medium text-charcoal-800">
-            <a href="#about" className="hover:text-gold-600 transition-colors">
+            <a href="/#about" className="hover:text-gold-600 transition-colors">
               About Drita
             </a>
-            <a href="#services" className="hover:text-gold-600 transition-colors">
+            <a href="/services" className="hover:text-gold-600 transition-colors">
               Services
             </a>
-            <a href="#price-guide" className="hover:text-gold-600 transition-colors">
+            <a href="/price-guide" className="hover:text-gold-600 transition-colors">
               Price Guide
             </a>
-            <a href="#transformations" className="hover:text-gold-600 transition-colors">
+            <a href="/#transformations" className="hover:text-gold-600 transition-colors">
               Before & After
             </a>
-            <a href="#reviews" className="hover:text-gold-600 transition-colors">
+            <a href="/#reviews" className="hover:text-gold-600 transition-colors">
               Reviews
             </a>
-            <a href="#faq" className="hover:text-gold-600 transition-colors">
+            <a href="/#faq" className="hover:text-gold-600 transition-colors">
               Aftercare & FAQ
             </a>
-            <a href="#contact" className="hover:text-gold-600 transition-colors">
+            <a href="/#contact" className="hover:text-gold-600 transition-colors">
               Contact & Map
             </a>
           </nav>
@@ -141,49 +141,49 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
         <div className="lg:hidden bg-cream-50/98 backdrop-blur-xl border-b border-gold-500/20 px-6 py-6 space-y-4 animate-in slide-in-from-top duration-300">
           <nav className="flex flex-col space-y-3 font-medium text-charcoal-800">
             <a
-              href="#about"
+              href="/#about"
               onClick={() => setMobileMenuOpen(false)}
               className="py-2 border-b border-cream-200 hover:text-gold-600"
             >
               About Drita
             </a>
             <a
-              href="#services"
+              href="/services"
               onClick={() => setMobileMenuOpen(false)}
               className="py-2 border-b border-cream-200 hover:text-gold-600"
             >
               Services & Treatments
             </a>
             <a
-              href="#price-guide"
+              href="/price-guide"
               onClick={() => setMobileMenuOpen(false)}
               className="py-2 border-b border-cream-200 hover:text-gold-600"
             >
               Price Guide
             </a>
             <a
-              href="#transformations"
+              href="/#transformations"
               onClick={() => setMobileMenuOpen(false)}
               className="py-2 border-b border-cream-200 hover:text-gold-600"
             >
               Before & After Showcase
             </a>
             <a
-              href="#reviews"
+              href="/#reviews"
               onClick={() => setMobileMenuOpen(false)}
               className="py-2 border-b border-cream-200 hover:text-gold-600"
             >
               Client Reviews (4.8★)
             </a>
             <a
-              href="#faq"
+              href="/#faq"
               onClick={() => setMobileMenuOpen(false)}
               className="py-2 border-b border-cream-200 hover:text-gold-600"
             >
               Aftercare & FAQ
             </a>
             <a
-              href="#contact"
+              href="/#contact"
               onClick={() => setMobileMenuOpen(false)}
               className="py-2 border-b border-cream-200 hover:text-gold-600"
             >

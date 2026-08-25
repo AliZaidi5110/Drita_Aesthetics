@@ -83,22 +83,22 @@ export const Footer: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Centered Top Navigation Bar */}
           <nav className="flex flex-wrap justify-center items-center gap-6 sm:gap-10 border-b border-white/10 pb-8 text-xs font-bold tracking-[0.2em] text-cream-200 uppercase">
-            <a href="#about" className="hover:text-gold-400 transition-colors">
+            <a href="/#about" className="hover:text-gold-400 transition-colors">
               ABOUT US
             </a>
-            <a href="#services" className="hover:text-gold-400 transition-colors">
+            <a href="/services" className="hover:text-gold-400 transition-colors">
               SERVICES
             </a>
-            <a href="#price-guide" className="hover:text-gold-400 transition-colors">
+            <a href="/price-guide" className="hover:text-gold-400 transition-colors">
               PRICE GUIDE
             </a>
-            <a href="#transformations" className="hover:text-gold-400 transition-colors">
+            <a href="/#transformations" className="hover:text-gold-400 transition-colors">
               BEFORE & AFTER
             </a>
-            <a href="#reviews" className="hover:text-gold-400 transition-colors">
+            <a href="/#reviews" className="hover:text-gold-400 transition-colors">
               REVIEWS
             </a>
-            <a href="#contact" className="hover:text-gold-400 transition-colors">
+            <a href="/#contact" className="hover:text-gold-400 transition-colors">
               CONTACTS
             </a>
           </nav>

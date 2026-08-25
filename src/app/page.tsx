@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Header } from '../components/Header';
 import { Hero } from '../components/Hero';
 import { MarqueeTicker } from '../components/MarqueeTicker';
+import { DestinationSection } from '../components/DestinationSection';
 import { AboutSection } from '../components/AboutSection';
 import { ServicesSection } from '../components/ServicesSection';
 import { PriceGuide } from '../components/PriceGuide';
@@ -36,8 +37,11 @@ export default function Home() {
       {/* Hero Section */}
       <Hero onOpenBooking={() => handleOpenBooking()} />
 
-      {/* Rejuvita Style Infinite Ticker */}
+      {/* Infinite Ticker Banner */}
       <MarqueeTicker />
+
+      {/* Rejuvita Destination Section (Beneath Hero) */}
+      <DestinationSection onOpenBooking={() => handleOpenBooking()} />
 
       {/* About Drita & Clinical Philosophy */}
       <AboutSection onOpenBooking={() => handleOpenBooking()} />
@@ -51,7 +55,7 @@ export default function Home() {
       {/* Before & After Transformation Showcase */}
       <TransformationGallery />
 
-      {/* Verified Treatwell Reviews Section */}
+      {/* Verified Treatwell & Booksy Reviews Section */}
       <ReviewsSection />
 
       {/* Aftercare Advice & FAQ */}

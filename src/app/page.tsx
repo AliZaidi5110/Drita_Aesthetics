@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Header } from '../components/Header';
 import { Hero } from '../components/Hero';
+import { EnhancedFeaturesSection } from '../components/EnhancedFeaturesSection';
 import { MarqueeTicker } from '../components/MarqueeTicker';
 import { DestinationSection } from '../components/DestinationSection';
 import { AboutSection } from '../components/AboutSection';
@@ -36,10 +37,13 @@ export default function Home() {
       {/* Hero Section */}
       <Hero onOpenBooking={() => handleOpenBooking()} />
 
+      {/* Enhanced Features Glassmorphism Section (Below Hero) */}
+      <EnhancedFeaturesSection />
+
       {/* Infinite Ticker Banner */}
       <MarqueeTicker />
 
-      {/* Rejuvita Destination Section (Beneath Hero) */}
+      {/* Rejuvita Destination Section */}
       <DestinationSection onOpenBooking={() => handleOpenBooking()} />
 
       {/* About Drita & Clinical Philosophy */}

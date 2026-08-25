@@ -1,14 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', 'Montserrat', sans-serif;
+  --font-editorial: 'Cormorant Garamond', serif;
+  
   --bg-dark: #0B0B0D;
-  --bg-dark-card: #141318;
+  --bg-dark-velvet: #140A0F;
+  --bg-dark-card: #1C1217;
+  
+  --color-crimson: #D92C44;
+  --color-crimson-hover: #B82236;
   --gold-accent: #D4AF37;
   --bronze-accent: #C5A880;
   --cream-light: #FDFBF7;
@@ -16,6 +22,7 @@
 
 html {
   scroll-behavior: smooth;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
 body {
@@ -23,20 +30,39 @@ body {
   color: #1A1817;
   font-family: var(--font-sans);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Rejuvita Luxury Overlay & Background Gradients */
+/* Rejuvita Editorial Typography & Headings */
+.font-editorial {
+  font-family: var(--font-editorial);
+}
+
+.rejuvita-heading {
+  font-family: var(--font-serif);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.rejuvita-subheading {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  letter-spacing: 0.05em;
+}
+
+/* Rejuvita Luxury Background Gradients */
 .rejuvita-radial-overlay {
-  background-image: radial-gradient(at center center, rgba(11, 11, 13, 0) 0%, #0B0B0D 100%);
+  background-image: radial-gradient(circle at center, rgba(70, 22, 38, 0.4) 0%, #140A0F 100%);
 }
 
 .rejuvita-dark-section {
-  background-color: #0B0B0D;
+  background-color: #140A0F;
   color: #FDFBF7;
 }
 
 .rejuvita-card-dark {
-  background: rgba(20, 19, 24, 0.9);
+  background: rgba(28, 18, 23, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(212, 175, 55, 0.22);
@@ -51,7 +77,7 @@ body {
 
 /* Gold Shimmer & Luxury Text Effects */
 .gold-gradient-text {
-  background: linear-gradient(135deg, #B89326 0%, #D4AF37 40%, #E5C978 70%, #917117 100%);
+  background: linear-gradient(135deg, #B89326 0%, #D4AF37 35%, #F7E7A9 60%, #C5A880 80%, #917117 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -62,6 +88,26 @@ body {
 
 .gold-border-glow {
   box-shadow: 0 0 30px -5px rgba(212, 175, 55, 0.3);
+}
+
+/* Rejuvita Buttons & Interactive CTA Styles */
+.btn-rejuvita-primary {
+  background-color: var(--color-crimson);
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border-radius: 0.75rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 25px -5px rgba(217, 44, 68, 0.3);
+}
+
+.btn-rejuvita-primary:hover {
+  background-color: var(--color-crimson-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px -5px rgba(217, 44, 68, 0.45);
 }
 
 /* Infinite Marquee Ticker Animation */
@@ -86,7 +132,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #FDFBF7;
+  background: #140A0F;
 }
 
 ::-webkit-scrollbar-thumb {

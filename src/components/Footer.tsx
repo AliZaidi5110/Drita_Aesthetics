@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { MapPin, Clock, Star, ArrowRight, Check, ExternalLink } from 'lucide-react';
+import { Mail, Phone, MapPin, Check, ExternalLink, Instagram, Facebook } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const [subscribed, setSubscribed] = useState(false);
@@ -15,46 +15,62 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-charcoal-950 text-cream-100 font-sans relative border-t border-gold-500/20">
-      {/* Top Newsletter CTA Strip */}
-      <div className="border-b border-charcoal-800 py-12 bg-charcoal-900/60">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-6 space-y-2 text-center lg:text-left">
-            <span className="text-xs uppercase tracking-widest text-gold-400 font-semibold">
-              Exclusive VIP Privilege
-            </span>
-            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white">
-              Subscribe & Save 10% On Your First Treatment
-            </h3>
-            <p className="text-xs text-cream-300 font-light max-w-md">
-              Receive luxury skincare guidance, seasonal SPMU promotions, and priority appointment booking updates.
-            </p>
+    <footer className="w-full font-sans relative">
+      {/* 1. TOP NEWSLETTER HERO BANNER */}
+      <div className="relative min-h-[460px] sm:min-h-[520px] flex items-center justify-center overflow-hidden">
+        {/* Background Portrait Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/footer-newsletter-bg.webp"
+            alt="Drita Aesthetics Skincare Newsletter"
+            className="w-full h-full object-cover object-center scale-105"
+          />
+          {/* Dark Translucent Gradient Overlay matching Rejuvita template */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0e070b]/75 via-[#140A0F]/80 to-[#140A0F]" />
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center space-y-5 py-16">
+          {/* Top Small Gold Emblem Icon */}
+          <div className="w-8 h-8 mx-auto flex items-center justify-center border border-gold-400/50 rounded-sm">
+            <div className="w-3 h-3 border border-gold-400 rotate-45" />
           </div>
 
-          <div className="lg:col-span-6">
+          {/* Headline */}
+          <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-bold tracking-widest text-white uppercase leading-tight">
+            SIGN UP FOR OUR NEWSLETTER
+            <span className="block mt-1 font-serif font-normal">AND SPECIAL EVENTS</span>
+          </h2>
+
+          {/* Subtitle */}
+          <p className="font-serif italic text-cream-200 text-sm sm:text-base tracking-wide font-light max-w-xl mx-auto">
+            Subscribe to our newsletter and receive a 10% off for any further treatment.
+          </p>
+
+          {/* Form */}
+          <div className="pt-4 max-w-xl mx-auto">
             {subscribed ? (
-              <div className="bg-gold-500/10 border border-gold-500/40 p-4 rounded-2xl flex items-center space-x-3 text-gold-400">
+              <div className="bg-[#140A0F]/90 border border-gold-500/40 p-4 rounded-xl flex items-center justify-center space-x-3 text-gold-400">
                 <Check className="w-5 h-5 text-gold-400" />
-                <span className="text-xs font-semibold">
-                  Thank you for subscribing! Your 10% promo voucher code has been registered.
+                <span className="text-xs font-semibold uppercase tracking-wider">
+                  Thank you! Your 10% off voucher code has been sent.
                 </span>
               </div>
             ) : (
-              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
+              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row items-center justify-center gap-3">
                 <input
                   type="email"
                   required
-                  placeholder="Enter your email address..."
+                  placeholder="Email*"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-5 py-3.5 rounded-full bg-charcoal-800 border border-gold-500/30 text-xs text-white placeholder-cream-400 focus:outline-none focus:border-gold-400"
+                  className="w-full sm:w-80 px-5 py-3.5 bg-black/40 border border-white/20 text-white placeholder-cream-300/60 text-xs focus:outline-none focus:border-gold-400 rounded-lg backdrop-blur-sm transition-all"
                 />
                 <button
                   type="submit"
-                  className="bg-gradient-to-r from-gold-500 to-bronze-500 hover:from-gold-600 hover:to-gold-700 text-white font-semibold text-xs px-8 py-3.5 rounded-full transition-all shadow-md flex items-center justify-center space-x-2 flex-shrink-0"
+                  className="w-full sm:w-auto bg-[#D92C44] hover:bg-[#B82236] text-white font-semibold text-xs uppercase tracking-widest px-8 py-3.5 rounded-lg shadow-lg transition-all duration-300 flex-shrink-0"
                 >
-                  <span>Claim 10% Off</span>
-                  <ArrowRight className="w-4 h-4" />
+                  SUBSCRIBE
                 </button>
               </form>
             )}
@@ -62,104 +78,108 @@ export const Footer: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Footer Links */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
-        {/* Brand Column */}
-        <div className="lg:col-span-4 space-y-4">
-          <a href="#" className="flex flex-col">
-            <span className="font-serif text-2xl font-bold tracking-wider text-white">
-              DRITA'S
-            </span>
-            <span className="text-xs tracking-[0.25em] text-gold-400 uppercase font-semibold">
-              Aesthetics & SPMU Brows
-            </span>
-          </a>
+      {/* 2. MAIN DARK FOOTER SECTION */}
+      <div className="bg-[#140A0F] text-cream-100 border-t border-white/10 pt-10 pb-12 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Centered Top Navigation Bar */}
+          <nav className="flex flex-wrap justify-center items-center gap-6 sm:gap-10 border-b border-white/10 pb-8 text-xs font-bold tracking-[0.2em] text-cream-200 uppercase">
+            <a href="#about" className="hover:text-gold-400 transition-colors">
+              ABOUT US
+            </a>
+            <a href="#services" className="hover:text-gold-400 transition-colors">
+              SERVICES
+            </a>
+            <a href="#price-guide" className="hover:text-gold-400 transition-colors">
+              PRICE GUIDE
+            </a>
+            <a href="#transformations" className="hover:text-gold-400 transition-colors">
+              BEFORE & AFTER
+            </a>
+            <a href="#reviews" className="hover:text-gold-400 transition-colors">
+              REVIEWS
+            </a>
+            <a href="#contact" className="hover:text-gold-400 transition-colors">
+              CONTACTS
+            </a>
+          </nav>
 
-          <p className="text-xs text-cream-300 font-light leading-relaxed max-w-sm">
-            Salisbury's leading clinic for microblading, semi-permanent brows, dermal fillers, anti-wrinkle solutions, and revitalizing skin boosters. Dedicated to natural elegance and medical-grade safety standards.
-          </p>
-
-          <div className="flex items-center space-x-2 text-xs text-gold-400 pt-2">
-            <Star className="w-4 h-4 fill-gold-400" />
-            <span className="font-semibold text-white">4.8 / 5.0 Rating</span>
-            <span className="text-cream-400">• Verified on Treatwell & Booksy</span>
-          </div>
-        </div>
-
-        {/* Quick Links */}
-        <div className="lg:col-span-2 space-y-3">
-          <h4 className="font-serif text-sm font-bold text-white uppercase tracking-wider">
-            Navigation
-          </h4>
-          <ul className="text-xs space-y-2 text-cream-300 font-light">
-            <li><a href="#about" className="hover:text-gold-400 transition-colors">About Drita</a></li>
-            <li><a href="#services" className="hover:text-gold-400 transition-colors">All Services</a></li>
-            <li><a href="#price-guide" className="hover:text-gold-400 transition-colors">Price Guide</a></li>
-            <li><a href="#transformations" className="hover:text-gold-400 transition-colors">Before & After</a></li>
-            <li><a href="#reviews" className="hover:text-gold-400 transition-colors">Client Reviews</a></li>
-            <li><a href="#faq" className="hover:text-gold-400 transition-colors">Aftercare FAQ</a></li>
-          </ul>
-        </div>
-
-        {/* Treatments List */}
-        <div className="lg:col-span-3 space-y-3">
-          <h4 className="font-serif text-sm font-bold text-white uppercase tracking-wider">
-            Popular Treatments
-          </h4>
-          <ul className="text-xs space-y-2 text-cream-300 font-light">
-            <li>Microblading & Ombré SPMU Brows</li>
-            <li>Dermal Fillers & Lip Enhancement</li>
-            <li>Anti-Wrinkle Injections</li>
-            <li>Profhilo & Skin Boosters</li>
-            <li>Eyebrow Threading & Tinting</li>
-            <li>Gel Manicures & Pedicures</li>
-          </ul>
-        </div>
-
-        {/* Clinic Location & Hours */}
-        <div className="lg:col-span-3 space-y-3">
-          <h4 className="font-serif text-sm font-bold text-white uppercase tracking-wider">
-            Clinic Details
-          </h4>
-          <div className="text-xs text-cream-300 font-light space-y-2.5">
-            <div className="flex items-start space-x-2">
-              <MapPin className="w-4 h-4 text-gold-400 flex-shrink-0 mt-0.5" />
-              <span>15 Endless Street, Salisbury, SP1 1DL, United Kingdom</span>
+          {/* Three Columns Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 py-12 items-center text-center">
+            {/* Left Column: ADDRESS */}
+            <div className="space-y-3 md:text-left">
+              <h4 className="font-serif text-sm font-bold tracking-widest text-white uppercase">
+                ADDRESS
+              </h4>
+              <div className="text-xs text-cream-300 font-light space-y-1.5 leading-relaxed">
+                <p>15 Endless Street, Salisbury, SP1 1DL, UK</p>
+                <p className="pt-2 text-cream-400">Mon–Sat: 10:00am – 5:30pm</p>
+                <p className="text-gold-400">Sat/Sun: By Appointment Only</p>
+              </div>
             </div>
-            <div className="flex items-start space-x-2">
-              <Clock className="w-4 h-4 text-gold-400 flex-shrink-0 mt-0.5" />
-              <div>
-                <p>Mon – Sat: 10:00 AM – 5:30 PM</p>
-                <p className="text-gold-400">Sun: By Appointment</p>
+
+            {/* Center Column: BRAND LOGO EMBLEM */}
+            <div className="flex flex-col items-center justify-center space-y-3">
+              {/* Gold Flower/Star Geometry Emblem */}
+              <div className="w-14 h-14 flex items-center justify-center">
+                <svg className="w-12 h-12 text-gold-400" viewBox="0 0 100 100" fill="currentColor">
+                  <path d="M50 0 C60 25 75 40 100 50 C75 60 60 75 50 100 C40 75 25 60 0 50 C25 40 40 25 50 0 Z" opacity="0.85" />
+                  <circle cx="50" cy="50" r="12" fill="none" stroke="currentColor" strokeWidth="4" />
+                </svg>
+              </div>
+
+              <div className="text-center">
+                <span className="font-serif text-2xl font-bold tracking-[0.2em] text-white block">
+                  DRITA'S
+                </span>
+                <span className="text-[10px] tracking-[0.3em] text-gold-400 uppercase font-semibold block mt-0.5">
+                  AESTHETICS & BEAUTY
+                </span>
+              </div>
+            </div>
+
+            {/* Right Column: CONTACTS */}
+            <div className="space-y-3 md:text-right">
+              <h4 className="font-serif text-sm font-bold tracking-widest text-white uppercase">
+                CONTACTS
+              </h4>
+              <div className="text-xs text-cream-300 font-light space-y-1.5">
+                <p className="flex items-center justify-center md:justify-end space-x-1.5">
+                  <Phone className="w-3.5 h-3.5 text-gold-400" />
+                  <span>+44 7480 233841</span>
+                </p>
+                <p className="flex items-center justify-center md:justify-end space-x-1.5">
+                  <Mail className="w-3.5 h-3.5 text-gold-400" />
+                  <span className="uppercase tracking-wider">DRITASAESTHETICS.COM</span>
+                </p>
+              </div>
+
+              {/* Social Icons */}
+              <div className="flex items-center justify-center md:justify-end space-x-3 pt-2">
+                <a
+                  href="https://booksy.com/en-gb/181781_dritas-aesthetics_aesthetic-medicine_1199961_salisbury"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full bg-white/10 hover:bg-gold-500 text-white flex items-center justify-center transition-colors"
+                  title="Booksy Profile"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://www.treatwell.co.uk/place/drita-s-aesthetics-beauty/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full bg-white/10 hover:bg-gold-500 text-white flex items-center justify-center transition-colors"
+                  title="Treatwell Page"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                </a>
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* Bottom Sub-footer */}
-      <div className="border-t border-charcoal-800 py-6 bg-charcoal-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-[11px] text-cream-400 space-y-3 sm:space-y-0">
-          <p>© 2026 Drita's Aesthetics & SPMU Brows. All Rights Reserved.</p>
-          <div className="flex items-center space-x-6">
-            <a
-              href="https://booksy.com/en-gb/181781_dritas-aesthetics_aesthetic-medicine_1199961_salisbury"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gold-400 hover:underline flex items-center space-x-1"
-            >
-              <span>Book on Booksy</span>
-              <ExternalLink className="w-3 h-3" />
-            </a>
-            <a
-              href="https://www.treatwell.co.uk/place/drita-s-aesthetics-beauty/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gold-400 hover:underline flex items-center space-x-1"
-            >
-              <span>Book on Treatwell</span>
-              <ExternalLink className="w-3 h-3" />
-            </a>
+          {/* Bottom Copyright Line */}
+          <div className="border-t border-white/10 pt-6 text-center text-[11px] text-cream-400 space-y-2">
+            <p>© 2026 Drita's Aesthetics & SPMU Brows. All Rights Reserved.</p>
           </div>
         </div>
       </div>

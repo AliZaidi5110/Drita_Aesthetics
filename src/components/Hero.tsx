@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Calendar, Sparkles, ShieldCheck, Star, ArrowRight, Award, ExternalLink } from 'lucide-react';
+import { Sparkles, Calendar, ArrowRight, ExternalLink, ShieldCheck } from 'lucide-react';
 
 interface HeroProps {
   onOpenBooking: () => void;
@@ -9,133 +9,98 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-cream-50 via-cream-100 to-cream-50 pt-10 pb-20 lg:pt-16 lg:pb-28">
-      {/* Background Decorative Gold Orbs */}
-      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gold-300/15 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute top-40 right-10 w-[350px] h-[350px] bg-bronze-300/20 blur-[100px] rounded-full pointer-events-none" />
+    <section className="relative min-h-[90vh] lg:min-h-screen w-full flex flex-col justify-between overflow-hidden bg-charcoal-950 text-white select-none">
+      {/* Background Peony Model Image */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="/images/hero-peony-bg.png"
+          alt="Drita Aesthetics Refined Beauty Pink Peonies"
+          className="w-full h-full object-cover object-center scale-105 transform transition-transform duration-1000"
+        />
+        {/* Soft Dark Vignette & Gradient Overlay for Contrast */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/35 to-black/75" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0D] via-transparent to-black/50" />
+      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          {/* Left Hero Content */}
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-            {/* Top Pill Badge */}
-            <div className="inline-flex items-center space-x-2 bg-white/80 border border-gold-500/30 backdrop-blur-md px-4 py-1.5 rounded-full shadow-sm">
-              <Sparkles className="w-4 h-4 text-gold-600" />
-              <span className="text-xs font-semibold uppercase tracking-wider text-gold-700">
-                Salisbury Premier Aesthetic & SPMU Clinic
+      {/* Main Content Area */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col justify-between py-16 lg:py-24">
+        {/* Top Tagline */}
+        <div className="pt-6 sm:pt-10">
+          <div className="inline-flex items-center space-x-2 bg-black/40 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20">
+            <Sparkles className="w-3.5 h-3.5 text-gold-400" />
+            <span className="text-[11px] sm:text-xs uppercase font-bold tracking-[0.25em] text-gold-300">
+              ADVANCED AESTHETIC MEDICINE
+            </span>
+          </div>
+        </div>
+
+        {/* Middle & Bottom Grid Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end my-auto py-10">
+          {/* Left Column: Big Headline */}
+          <div className="lg:col-span-7 space-y-4">
+            <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white uppercase leading-[1.08]">
+              REFINED{' '}
+              <span className="font-serif italic font-normal text-gold-300 gold-gradient-text">
+                BEAUTY.
               </span>
-            </div>
-
-            {/* Main Headline */}
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-charcoal-900 leading-[1.15]">
-              Artistry in Aesthetics &{' '}
-              <span className="italic font-normal gold-gradient-text block sm:inline">
-                Permanent Brow Perfection
+              <br />
+              THOUGHTFULLY
+              <br />
+              <span className="gold-gradient-text font-serif italic font-normal">
+                DESIGNED.
               </span>
             </h1>
+          </div>
 
-            {/* Subtitle */}
-            <p className="text-base sm:text-lg text-charcoal-700 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
-              Elevate your natural facial architecture with bespoke microblading, semi-permanent eyebrow mapping, anti-wrinkle injectables, and medical-grade skin boosters in Salisbury.
+          {/* Right Column: Subtitle & Dual CTA Buttons */}
+          <div className="lg:col-span-5 space-y-6 lg:text-left lg:pl-4">
+            <p className="font-serif italic text-cream-100 text-sm sm:text-base lg:text-lg leading-relaxed font-light drop-shadow-md">
+              At Drita's Aesthetics, we combine medical precision with aesthetic artistry to enhance your natural structure — never overpower it.
             </p>
 
-            {/* Primary & Secondary Action CTAs */}
-            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-3 sm:space-y-0 sm:space-x-4">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
               <button
                 onClick={onOpenBooking}
-                className="w-full sm:w-auto bg-gradient-to-r from-gold-500 via-bronze-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white font-semibold px-8 py-4 rounded-full shadow-xl shadow-gold-500/25 hover:shadow-gold-500/40 transition-all duration-300 flex items-center justify-center space-x-3 transform hover:-translate-y-1"
+                className="bg-[#D92C44] hover:bg-[#B82236] text-white font-semibold text-xs uppercase tracking-widest px-8 py-4 rounded-xl shadow-xl shadow-[#D92C44]/30 hover:shadow-[#D92C44]/50 transition-all duration-300 flex items-center justify-center space-x-2 transform hover:-translate-y-0.5"
               >
-                <Calendar className="w-5 h-5" />
-                <span>Book Consultation</span>
+                <Calendar className="w-4 h-4" />
+                <span>BOOK A CONSULTATION</span>
               </button>
 
               <a
-                href="https://booksy.com/en-gb/181781_dritas-aesthetics_aesthetic-medicine_1199961_salisbury"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto bg-charcoal-900 hover:bg-charcoal-800 text-gold-400 font-medium px-7 py-4 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 text-sm"
+                href="#about"
+                className="bg-[#EAE3DB]/90 hover:bg-[#EAE3DB] text-charcoal-900 font-semibold text-xs uppercase tracking-widest px-7 py-4 rounded-xl shadow-md transition-all duration-300 flex items-center justify-center space-x-2 backdrop-blur-sm transform hover:-translate-y-0.5"
               >
-                <span>Book on Booksy</span>
-                <ExternalLink className="w-4 h-4 text-gold-400" />
+                <span>DISCOVER OUR APPROACH</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </a>
             </div>
+          </div>
+        </div>
 
-            {/* Key Trust Pillars Metrics */}
-            <div className="pt-6 border-t border-bronze-200/60 grid grid-cols-3 gap-4 text-center lg:text-left">
-              <div>
-                <div className="flex items-center justify-center lg:justify-start space-x-1 text-gold-600">
-                  <Star className="w-4 h-4 fill-gold-500 text-gold-500" />
-                  <span className="font-serif text-xl sm:text-2xl font-bold text-charcoal-900">4.8★</span>
-                </div>
-                <p className="text-xs text-charcoal-700 mt-0.5">Treatwell & Booksy</p>
-              </div>
-
-              <div>
-                <div className="flex items-center justify-center lg:justify-start space-x-1 text-gold-600">
-                  <ShieldCheck className="w-4 h-4 text-gold-600" />
-                  <span className="font-serif text-xl sm:text-2xl font-bold text-charcoal-900">100%</span>
-                </div>
-                <p className="text-xs text-charcoal-700 mt-0.5">Custom Mapping</p>
-              </div>
-
-              <div>
-                <div className="flex items-center justify-center lg:justify-start space-x-1 text-gold-600">
-                  <Award className="w-4 h-4 text-gold-600" />
-                  <span className="font-serif text-xl sm:text-2xl font-bold text-charcoal-900">Certified</span>
-                </div>
-                <p className="text-xs text-charcoal-700 mt-0.5">Aesthetic Practitioner</p>
-              </div>
+        {/* Bottom Trust Badges Bar */}
+        <div className="pt-6 border-t border-white/15 flex flex-wrap items-center justify-between gap-4 text-xs text-cream-200">
+          <div className="flex items-center space-x-6">
+            <div className="flex items-center space-x-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="font-medium text-white">15 Endless Street, Salisbury SP1 1DL</span>
+            </div>
+            <div className="hidden sm:flex items-center space-x-1 text-gold-300 font-semibold">
+              <ShieldCheck className="w-4 h-4 text-gold-400" />
+              <span>4.8★ Verified on Treatwell & Booksy</span>
             </div>
           </div>
 
-          {/* Right Hero Image & Visual Card */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative mx-auto max-w-md lg:max-w-none">
-              {/* Outer Decorative Ring */}
-              <div className="absolute -inset-2 rounded-[2.5rem] bg-gradient-to-tr from-gold-400/40 via-bronze-300/30 to-gold-600/40 blur-lg transform -rotate-1" />
-
-              {/* Card Container */}
-              <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/80 bg-white">
-                <img
-                  src="/images/84-profile-1.webp"
-                  alt="Drita Aesthetic Practitioner Eyebrow SPMU Treatment"
-                  className="w-full h-[480px] object-cover object-top transform hover:scale-105 transition-transform duration-700"
-                />
-
-                {/* Overlay Soft Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/80 via-transparent to-transparent" />
-
-                {/* Floating Bottom Card */}
-                <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-5 rounded-2xl border border-gold-400/30 shadow-lg">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-600 flex-shrink-0 font-serif font-bold text-lg border border-gold-500/40">
-                      DA
-                    </div>
-                    <div>
-                      <h4 className="font-serif text-base font-bold text-charcoal-900">
-                        Drita's Aesthetics & Beauty
-                      </h4>
-                      <p className="text-xs text-charcoal-600">
-                        15 Endless Street, Salisbury SP1 1DL
-                      </p>
-                      <div className="flex items-center space-x-1 mt-1">
-                        <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                        <span className="text-[11px] font-medium text-emerald-700">Open Today • Booksy & Treatwell Live</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Top Floating Badge */}
-              <div className="absolute -top-4 -right-4 bg-charcoal-900 text-gold-400 p-4 rounded-2xl shadow-xl border border-gold-500/30 flex items-center space-x-3 backdrop-blur-md">
-                <Sparkles className="w-6 h-6 text-gold-400" />
-                <div>
-                  <p className="text-[10px] uppercase tracking-widest text-cream-300">Signature Service</p>
-                  <p className="font-serif text-sm font-semibold text-white">Ombré & Microblading Brows</p>
-                </div>
-              </div>
-            </div>
+          <div className="flex items-center space-x-4">
+            <a
+              href="https://booksy.com/en-gb/181781_dritas-aesthetics_aesthetic-medicine_1199961_salisbury"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gold-300 hover:text-white transition-colors underline flex items-center space-x-1"
+            >
+              <span>Book on Booksy</span>
+              <ExternalLink className="w-3 h-3" />
+            </a>
           </div>
         </div>
       </div>

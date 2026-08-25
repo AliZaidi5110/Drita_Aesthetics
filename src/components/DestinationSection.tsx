@@ -9,10 +9,15 @@ interface DestinationSectionProps {
 
 export const DestinationSection: React.FC<DestinationSectionProps> = ({ onOpenBooking }) => {
   return (
-    <section className="relative bg-[#0B0B0D] text-cream-100 py-24 lg:py-32 overflow-hidden border-t border-gold-500/20">
-      {/* Background Soft Dark Maroon Glow */}
-      <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#3B1219]/40 blur-[140px] rounded-full pointer-events-none" />
-      <div className="absolute top-1/4 right-10 w-[450px] h-[450px] bg-[#2A0E13]/30 blur-[120px] rounded-full pointer-events-none" />
+    <section className="relative bg-[#140A0F] text-cream-100 py-24 lg:py-32 overflow-hidden border-t border-gold-500/20">
+      {/* Background Radial Glow Matching Swatch #140A0F */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(circle at 75% 50%, rgba(70, 22, 38, 0.45) 0%, rgba(20, 10, 15, 0.95) 60%, rgba(20, 10, 15, 1) 100%)',
+        }}
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -29,7 +34,7 @@ export const DestinationSection: React.FC<DestinationSectionProps> = ({ onOpenBo
               </div>
 
               {/* Overlapping Interior Image (Bottom Right) */}
-              <div className="absolute -bottom-8 -right-4 sm:-right-8 w-44 sm:w-56 h-44 sm:h-56 rounded-2xl overflow-hidden border-4 border-[#0B0B0D] shadow-2xl z-20 transform hover:scale-105 transition-transform duration-500">
+              <div className="absolute -bottom-8 -right-4 sm:-right-8 w-44 sm:w-56 h-44 sm:h-56 rounded-2xl overflow-hidden border-4 border-[#140A0F] shadow-2xl z-20 transform hover:scale-105 transition-transform duration-500">
                 <img
                   src="/images/destination-interior.png"
                   alt="Drita Clinic Luxury Interior Lounge"

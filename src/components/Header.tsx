@@ -20,23 +20,23 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
   }, []);
 
   return (
-    <header className="w-full font-sans sticky top-0 z-50 transition-all duration-300">
-      {/* Top Announcement Bar */}
-      <div className="bg-charcoal-900 text-cream-100 text-xs py-2 px-4 border-b border-gold-500/20 hidden md:block">
+    <header className="w-full font-sans fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+      {/* Top Announcement Bar - Transparent Overlay */}
+      <div className="bg-black/30 backdrop-blur-sm text-cream-100 text-xs py-2 px-4 border-b border-white/10 hidden md:block">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-6">
-            <div className="flex items-center space-x-1.5 text-cream-200 hover:text-gold-400 transition-colors">
-              <MapPin className="w-3.5 h-3.5 text-gold-500" />
+            <div className="flex items-center space-x-1.5 text-cream-200 hover:text-gold-300 transition-colors">
+              <MapPin className="w-3.5 h-3.5 text-gold-400" />
               <span>15 Endless Street, Salisbury, SP1 1DL</span>
             </div>
             <div className="flex items-center space-x-1.5 text-cream-200">
-              <Clock className="w-3.5 h-3.5 text-gold-500" />
+              <Clock className="w-3.5 h-3.5 text-gold-400" />
               <span>Mon – Sat: 10:00 AM – 5:30 PM</span>
             </div>
           </div>
 
           <div className="flex items-center space-x-5">
-            <div className="flex items-center space-x-1 text-gold-400 font-medium">
+            <div className="flex items-center space-x-1 text-gold-300 font-medium">
               <Star className="w-3.5 h-3.5 fill-gold-400 text-gold-400" />
               <span>4.8 / 5.0 Rating</span>
             </div>
@@ -62,58 +62,58 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
         </div>
       </div>
 
-      {/* Main Luxury Navigation Bar */}
+      {/* Main Transparent Navigation Bar */}
       <div
         className={`w-full transition-all duration-300 ${
           isScrolled
-            ? 'bg-cream-50/95 backdrop-blur-md shadow-md py-3 border-b border-gold-500/20'
-            : 'bg-cream-50 py-5 border-b border-bronze-200/50'
+            ? 'bg-[#140A0F]/90 backdrop-blur-md shadow-xl py-3 border-b border-gold-500/20'
+            : 'bg-transparent py-5 border-b border-white/10'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           {/* Brand Logo */}
           <a href="/" className="flex flex-col group">
-            <span className="font-serif text-xl sm:text-2xl font-bold tracking-wider text-charcoal-900 group-hover:text-gold-600 transition-colors">
+            <span className="font-serif text-xl sm:text-2xl font-bold tracking-wider text-white group-hover:text-gold-300 transition-colors drop-shadow-md">
               DRITA'S
             </span>
-            <span className="text-[10px] sm:text-xs tracking-[0.25em] text-gold-600 uppercase font-semibold">
+            <span className="text-[10px] sm:text-xs tracking-[0.25em] text-gold-400 uppercase font-semibold">
               Aesthetics & SPMU Brows
             </span>
           </a>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center space-x-8 text-sm font-medium text-charcoal-800">
-            <a href="/#about" className="hover:text-gold-600 transition-colors">
-              About Drita
+          <nav className="hidden lg:flex items-center space-x-8 text-xs sm:text-sm font-semibold tracking-wider uppercase text-white drop-shadow-md">
+            <a href="/#about" className="hover:text-gold-300 transition-colors">
+              ABOUT US
             </a>
-            <a href="/services" className="hover:text-gold-600 transition-colors">
-              Services
+            <a href="/services" className="hover:text-gold-300 transition-colors">
+              SERVICES
             </a>
-            <a href="/price-guide" className="hover:text-gold-600 transition-colors">
-              Price Guide
+            <a href="/price-guide" className="hover:text-gold-300 transition-colors">
+              PRICE GUIDE
             </a>
-            <a href="/#transformations" className="hover:text-gold-600 transition-colors">
-              Before & After
+            <a href="/#transformations" className="hover:text-gold-300 transition-colors">
+              BEFORE & AFTER
             </a>
-            <a href="/#reviews" className="hover:text-gold-600 transition-colors">
-              Reviews
+            <a href="/#reviews" className="hover:text-gold-300 transition-colors">
+              REVIEWS
             </a>
-            <a href="/#faq" className="hover:text-gold-600 transition-colors">
-              Aftercare & FAQ
+            <a href="/#faq" className="hover:text-gold-300 transition-colors">
+              FAQ
             </a>
-            <a href="/#contact" className="hover:text-gold-600 transition-colors">
-              Contact & Map
+            <a href="/#contact" className="hover:text-gold-300 transition-colors">
+              CONTACT
             </a>
           </nav>
 
-          {/* Action CTA */}
+          {/* Action CTA Button */}
           <div className="hidden sm:flex items-center space-x-4">
             <button
               onClick={() => onOpenBooking()}
-              className="bg-gradient-to-r from-gold-500 via-bronze-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white font-medium text-sm px-5 py-2.5 rounded-full shadow-lg shadow-gold-500/20 hover:shadow-gold-500/35 transition-all duration-300 flex items-center space-x-2 transform hover:-translate-y-0.5"
+              className="bg-[#D92C44] hover:bg-[#B82236] text-white font-semibold text-xs uppercase tracking-widest px-6 py-3 rounded-xl shadow-lg shadow-[#D92C44]/30 hover:shadow-[#D92C44]/50 transition-all duration-300 flex items-center space-x-2 transform hover:-translate-y-0.5"
             >
               <Calendar className="w-4 h-4" />
-              <span>Book Appointment</span>
+              <span>BOOK CONSULTATION</span>
             </button>
           </div>
 
@@ -121,13 +121,13 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
           <div className="lg:hidden flex items-center space-x-2">
             <button
               onClick={() => onOpenBooking()}
-              className="sm:hidden bg-gold-500 text-white text-xs px-3 py-1.5 rounded-full font-medium"
+              className="sm:hidden bg-[#D92C44] text-white text-xs px-3.5 py-1.5 rounded-lg font-semibold uppercase tracking-wider"
             >
               Book
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-charcoal-800 hover:text-gold-600 focus:outline-none"
+              className="p-2 text-white hover:text-gold-300 focus:outline-none"
               aria-label="Toggle Navigation Menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -138,54 +138,54 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-cream-50/98 backdrop-blur-xl border-b border-gold-500/20 px-6 py-6 space-y-4 animate-in slide-in-from-top duration-300">
-          <nav className="flex flex-col space-y-3 font-medium text-charcoal-800">
+        <div className="lg:hidden bg-[#140A0F]/95 backdrop-blur-2xl border-b border-gold-500/20 px-6 py-6 space-y-4 animate-in slide-in-from-top duration-300">
+          <nav className="flex flex-col space-y-3 font-semibold text-xs uppercase tracking-widest text-white">
             <a
               href="/#about"
               onClick={() => setMobileMenuOpen(false)}
-              className="py-2 border-b border-cream-200 hover:text-gold-600"
+              className="py-2 border-b border-white/10 hover:text-gold-300"
             >
               About Drita
             </a>
             <a
               href="/services"
               onClick={() => setMobileMenuOpen(false)}
-              className="py-2 border-b border-cream-200 hover:text-gold-600"
+              className="py-2 border-b border-white/10 hover:text-gold-300"
             >
               Services & Treatments
             </a>
             <a
               href="/price-guide"
               onClick={() => setMobileMenuOpen(false)}
-              className="py-2 border-b border-cream-200 hover:text-gold-600"
+              className="py-2 border-b border-white/10 hover:text-gold-300"
             >
               Price Guide
             </a>
             <a
               href="/#transformations"
               onClick={() => setMobileMenuOpen(false)}
-              className="py-2 border-b border-cream-200 hover:text-gold-600"
+              className="py-2 border-b border-white/10 hover:text-gold-300"
             >
               Before & After Showcase
             </a>
             <a
               href="/#reviews"
               onClick={() => setMobileMenuOpen(false)}
-              className="py-2 border-b border-cream-200 hover:text-gold-600"
+              className="py-2 border-b border-white/10 hover:text-gold-300"
             >
               Client Reviews (4.8★)
             </a>
             <a
               href="/#faq"
               onClick={() => setMobileMenuOpen(false)}
-              className="py-2 border-b border-cream-200 hover:text-gold-600"
+              className="py-2 border-b border-white/10 hover:text-gold-300"
             >
               Aftercare & FAQ
             </a>
             <a
               href="/#contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="py-2 border-b border-cream-200 hover:text-gold-600"
+              className="py-2 border-b border-white/10 hover:text-gold-300"
             >
               Contact & Location
             </a>
@@ -196,7 +196,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
                 setMobileMenuOpen(false);
                 onOpenBooking();
               }}
-              className="w-full bg-gradient-to-r from-gold-500 to-bronze-500 text-white font-medium py-3 rounded-xl shadow-md flex justify-center items-center space-x-2"
+              className="w-full bg-[#D92C44] hover:bg-[#B82236] text-white font-semibold py-3 rounded-xl shadow-md text-xs uppercase tracking-widest flex justify-center items-center space-x-2"
             >
               <Calendar className="w-4 h-4" />
               <span>Book Appointment Online</span>

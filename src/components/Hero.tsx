@@ -9,8 +9,8 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
   return (
-    <section className="relative min-h-[90vh] lg:min-h-screen w-full flex flex-col justify-between overflow-hidden bg-charcoal-950 text-white select-none">
-      {/* Background Peony Model Image */}
+    <section className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden bg-charcoal-950 text-white select-none pt-20 sm:pt-28 pb-10">
+      {/* Full-Bleed Background Peony Model Image */}
       <div className="absolute inset-0 z-0">
         <img
           src="/images/hero-peony-bg.png"
@@ -23,9 +23,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col justify-between py-16 lg:py-24">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col justify-between">
         {/* Top Tagline */}
-        <div className="pt-6 sm:pt-10">
+        <div className="pt-4 sm:pt-6">
           <div className="inline-flex items-center space-x-2 bg-black/40 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20">
             <Sparkles className="w-3.5 h-3.5 text-gold-400" />
             <span className="text-[11px] sm:text-xs uppercase font-bold tracking-[0.25em] text-gold-300">
@@ -35,10 +35,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
         </div>
 
         {/* Middle & Bottom Grid Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end my-auto py-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end my-auto py-8">
           {/* Left Column: Big Headline */}
           <div className="lg:col-span-7 space-y-4">
-            <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white uppercase leading-[1.08]">
+            <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight text-white uppercase leading-[1.05]">
               REFINED{' '}
               <span className="font-serif italic font-normal text-gold-300 gold-gradient-text">
                 BEAUTY.

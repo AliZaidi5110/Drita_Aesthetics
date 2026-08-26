@@ -28,7 +28,7 @@ export const DestinationSection: React.FC<DestinationSectionProps> = ({ onOpenBo
               <div className="rounded-[2rem] overflow-hidden shadow-2xl border border-white/10 relative z-10">
                 <img
                   src="/images/destination-portrait.jpg"
-                  alt="Modern Aesthetic Care Model"
+                  alt="Drita's Aesthetics clinic — refined aesthetic treatments in Salisbury"
                   className="w-full h-[480px] sm:h-[540px] object-cover object-top"
                 />
               </div>
@@ -54,14 +54,14 @@ export const DestinationSection: React.FC<DestinationSectionProps> = ({ onOpenBo
             </div>
 
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-[1.2]">
-              A DESTINATION FOR{' '}
+              BESPOKE RESULTS.{' '}
               <span className="gold-gradient-text block sm:inline">
-                MODERN AESTHETIC CARE
+                BEAUTIFULLY NATURAL.
               </span>
             </h2>
 
             <p className="text-cream-200 text-sm sm:text-base leading-relaxed font-light max-w-xl">
-              Drita's Aesthetics & SPMU Brows is a physician-led aesthetic clinic specializing in facial refinement, body contouring, and regenerative non-surgical treatments. Our team focuses on harmony, proportion, and longevity — delivering results that evolve beautifully over time.
+              Drita's Aesthetics & SPMU Brows specialises in facial refinement, semi-permanent brow artistry, and skin rejuvenation. Treatments are designed around your anatomy — proportion first, confidence always.
             </p>
 
             <div className="pt-4">

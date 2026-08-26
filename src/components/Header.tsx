@@ -113,7 +113,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
               className="bg-[#D92C44] hover:bg-[#B82236] text-white font-semibold text-xs uppercase tracking-widest px-6 py-3 rounded-xl shadow-lg shadow-[#D92C44]/30 hover:shadow-[#D92C44]/50 transition-all duration-300 flex items-center space-x-2 transform hover:-translate-y-0.5"
             >
               <Calendar className="w-4 h-4" />
-              <span>BOOK CONSULTATION</span>
+              <span>BOOK A CONSULTATION</span>
             </button>
           </div>
 
@@ -123,7 +123,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
               onClick={() => onOpenBooking()}
               className="sm:hidden bg-[#D92C44] text-white text-xs px-3.5 py-1.5 rounded-lg font-semibold uppercase tracking-wider"
             >
-              Book
+              Book a Consultation
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -199,7 +199,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
               className="w-full bg-[#D92C44] hover:bg-[#B82236] text-white font-semibold py-3 rounded-xl shadow-md text-xs uppercase tracking-widest flex justify-center items-center space-x-2"
             >
               <Calendar className="w-4 h-4" />
-              <span>Book Appointment Online</span>
+              <span>Book a Consultation</span>
             </button>
           </div>
         </div>

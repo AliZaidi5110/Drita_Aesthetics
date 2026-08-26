@@ -2,28 +2,39 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: "Drita's Aesthetics & SPMU Brows | Beauty & Aesthetic Clinic Salisbury",
+  title: "Drita's Aesthetics & SPMU Brows | Aesthetic Clinic Salisbury",
   description:
-    "Salisbury's premier clinic for bespoke SPMU microblading brows, lip fillers, anti-wrinkle injectables, skin boosters, and eyebrow threading. Located at 15 Endless Street, Salisbury. Book online or on Treatwell.",
+    "Salisbury's premier clinic for bespoke SPMU microblading brows, lip fillers, anti-wrinkle injectables, Profhilo skin boosters, and eyebrow threading. 4.8★ verified on Treatwell. Located at 15 Endless Street, SP1 1DL.",
   keywords: [
-    "Drita Aesthetics",
+    "Drita's Aesthetics",
+    "Drita's Aesthetics & SPMU Brows",
     "SPMU Brows Salisbury",
     "Microblading Salisbury",
+    "Ombré Brows Salisbury",
     "Lip Fillers Salisbury",
-    "Anti wrinkle injections Salisbury",
-    "Profhilo Wiltshire",
+    "Anti-wrinkle injections Salisbury",
+    "Profhilo Salisbury",
+    "Skin boosters Wiltshire",
     "Treatwell Salisbury beauty",
-    "15 Endless Street beauty salon"
+    "15 Endless Street beauty salon",
+    "Aesthetic clinic Salisbury",
   ],
   authors: [{ name: "Drita's Aesthetics & SPMU Brows" }],
+  // Point canonical to our own Vercel domain (not Treatwell).
+  // When a custom domain is confirmed, replace this URL.
+  metadataBase: new URL('https://drita-aesthetics.vercel.app'),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: "Drita's Aesthetics & SPMU Brows | Salisbury Aesthetic Clinic",
+    title: "Drita's Aesthetics & SPMU Brows | Aesthetic Clinic Salisbury",
     description:
-      "Bespoke eyebrow mapping, lip augmentation, skin boosters, and facial threading at 15 Endless Street, Salisbury. 4.8★ rated with 31+ Treatwell reviews.",
-    url: "https://www.treatwell.co.uk/place/drita-s-aesthetics-beauty/",
+      "Bespoke eyebrow mapping, lip augmentation, skin boosters, and anti-wrinkle injections at 15 Endless Street, Salisbury. 4.8★ rated · 31+ verified Treatwell reviews.",
+    // Fixed: was pointing to Treatwell listing — now our own site
+    url: 'https://drita-aesthetics.vercel.app',
     siteName: "Drita's Aesthetics & SPMU Brows",
-    locale: "en_GB",
-    type: "website",
+    locale: 'en_GB',
+    type: 'website',
   },
 };
 

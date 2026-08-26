@@ -15,6 +15,13 @@ export const ContactSection: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Compose a mailto: link so enquiries reach the clinic's inbox directly.
+    // Replace with a proper form backend (e.g. Formspree, Resend) when available.
+    const subject = encodeURIComponent(`Enquiry: ${form.service}`);
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nPhone: ${form.phone}\nEmail: ${form.email}\nService: ${form.service}\n\nMessage:\n${form.message}`
+    );
+    window.open(`mailto:info@dritasaesthetics.co.uk?subject=${subject}&body=${body}`, '_blank');
     setSubmitted(true);
   };
 
@@ -219,7 +226,7 @@ export const ContactSection: React.FC = () => {
                   className="w-full bg-gradient-to-r from-gold-500 to-bronze-500 hover:from-gold-600 hover:to-gold-700 text-white font-semibold py-3.5 rounded-xl shadow-lg shadow-gold-500/20 transition-all flex items-center justify-center space-x-2 text-xs uppercase tracking-wider"
                 >
                   <Send className="w-4 h-4" />
-                  <span>Submit Inquiry</span>
+                  <span>Send Message</span>
                 </button>
               </form>
             )}

@@ -47,13 +47,13 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenBooking }) => 
                 <span className="text-xs uppercase tracking-widest font-semibold">About Drita's Aesthetics</span>
               </div>
               <h2 className="font-serif text-3xl sm:text-4xl font-bold text-charcoal-900 leading-tight">
-                A Destination for Modern Aesthetic Care & Permanent Eyebrow Artistry
+                Where Clinical Skill Meets Artistic Precision — Salisbury's Aesthetic Clinic
               </h2>
               <p className="text-charcoal-700 mt-4 leading-relaxed font-light text-base">
-                Located in the heart of Salisbury at <strong>15 Endless Street</strong>, Drita's Aesthetics & SPMU Brows provides a calm, hygienic, and luxurious sanctuary dedicated to facial harmony, eyebrow mapping, and skin rejuvenation.
+                Located in the heart of Salisbury at <strong>15 Endless Street</strong>, Drita's Aesthetics & SPMU Brows is a calm, hygienic, and luxurious sanctuary — purpose-built for facial harmony, eyebrow mapping, and skin rejuvenation.
               </p>
               <p className="text-charcoal-700 mt-3 leading-relaxed font-light text-base">
-                Whether you seek effortless wake-up-ready brows through microblading and ombré shading, youthful skin smoothing with dermal fillers and anti-wrinkle injections, or cellular skin rejuvenation with Profhilo skin boosters, every treatment is tailored to your individual anatomy.
+                Whether you're after effortless wake-up-ready brows through microblading and ombré shading, youthful smoothing with anti-wrinkle injectables and dermal fillers, or deep skin hydration with Profhilo bio-remodelling — every treatment starts with listening to what you actually want.
               </p>
             </div>
 
@@ -63,11 +63,11 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenBooking }) => 
                 Credentials & Hygiene Standards You Can Trust:
               </span>
               <div className="flex flex-wrap items-center gap-4 bg-white p-4 rounded-2xl border border-gold-500/20 shadow-sm">
-                <img src="/images/84-credentials-1.webp" alt="Credential 1" className="h-8 object-contain opacity-80 hover:opacity-100 transition-opacity" />
-                <img src="/images/84-credentials-2.webp" alt="Credential 2" className="h-8 object-contain opacity-80 hover:opacity-100 transition-opacity" />
-                <img src="/images/84-credentials-3.webp" alt="Credential 3" className="h-8 object-contain opacity-80 hover:opacity-100 transition-opacity" />
-                <img src="/images/84-credentials-4.webp" alt="Credential 4" className="h-8 object-contain opacity-80 hover:opacity-100 transition-opacity" />
-                <img src="/images/84-credentials-5.webp" alt="Credential 5" className="h-8 object-contain opacity-80 hover:opacity-100 transition-opacity" />
+                <img src="/images/84-credentials-1.webp" alt="Save Face Accreditation – UK Aesthetic Safety Regulator" className="h-8 object-contain opacity-80 hover:opacity-100 transition-opacity" />
+                <img src="/images/84-credentials-2.webp" alt="Wiltshire Council Hygiene & Safety Rating" className="h-8 object-contain opacity-80 hover:opacity-100 transition-opacity" />
+                <img src="/images/84-credentials-3.webp" alt="Level 4 Micropigmentation Qualification – Accredited Training Body" className="h-8 object-contain opacity-80 hover:opacity-100 transition-opacity" />
+                <img src="/images/84-credentials-4.webp" alt="Professional Insurance – Insured Aesthetic Practitioner" className="h-8 object-contain opacity-80 hover:opacity-100 transition-opacity" />
+                <img src="/images/84-credentials-5.webp" alt="Treatwell Verified Salon Partner" className="h-8 object-contain opacity-80 hover:opacity-100 transition-opacity" />
               </div>
             </div>
 
@@ -121,7 +121,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenBooking }) => 
                 className="bg-charcoal-900 hover:bg-charcoal-800 text-gold-400 font-medium px-7 py-3.5 rounded-full shadow-md transition-all duration-300 inline-flex items-center space-x-2 text-sm"
               >
                 <CheckCircle2 className="w-4 h-4 text-gold-400" />
-                <span>Schedule a Personal Consultation</span>
+                <span>Book a Consultation</span>
               </button>
             </div>
           </div>

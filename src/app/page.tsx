@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { Header } from '../components/Header';
 import { Hero } from '../components/Hero';
-import { EnhancedFeaturesSection } from '../components/EnhancedFeaturesSection';
 import { MarqueeTicker } from '../components/MarqueeTicker';
 import { DestinationSection } from '../components/DestinationSection';
 import { AboutSection } from '../components/AboutSection';
@@ -13,7 +12,7 @@ import { AftercareFAQ } from '../components/AftercareFAQ';
 import { ContactSection } from '../components/ContactSection';
 import { Footer } from '../components/Footer';
 import { BookingModal } from '../components/BookingModal';
-import { Sparkles, ArrowRight, Tag, ShieldCheck, HeartHandshake } from 'lucide-react';
+import { Sparkles, ArrowRight, Tag, ShieldCheck } from 'lucide-react';
 
 export default function Home() {
   const [bookingOpen, setBookingOpen] = useState(false);
@@ -31,39 +30,36 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-cream-50 flex flex-col">
-      {/* Header & Top Bar */}
+      {/* Header & Transparent Top Bar */}
       <Header onOpenBooking={handleOpenBooking} />
 
-      {/* Hero Section */}
+      {/* Hero – full-screen pink peony image with floating transparent navbar */}
       <Hero onOpenBooking={() => handleOpenBooking()} />
 
-      {/* Enhanced Features Glassmorphism Section (Below Hero) */}
-      <EnhancedFeaturesSection />
-
-      {/* Infinite Ticker Banner */}
+      {/* Scrolling services marquee */}
       <MarqueeTicker />
 
-      {/* Rejuvita Destination Section */}
+      {/* About the clinic – overlapping images, dark velvet background */}
       <DestinationSection onOpenBooking={() => handleOpenBooking()} />
 
-      {/* About Drita & Clinical Philosophy */}
+      {/* Practitioner story & clinical pillars */}
       <AboutSection onOpenBooking={() => handleOpenBooking()} />
 
-      {/* Elegant Quick Links Banner for Services & Prices */}
+      {/* Services & price guide quick-links */}
       <section className="py-20 bg-gradient-to-b from-cream-50 to-cream-100 border-y border-gold-500/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4">
             <div className="inline-flex items-center space-x-2 text-gold-600">
               <Sparkles className="w-4 h-4" />
               <span className="text-xs uppercase tracking-widest font-semibold">
-                Explore Clinical Treatments
+                What We Offer
               </span>
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl font-bold text-charcoal-900">
-              Discover Our Full Suite of Treatments & Pricing
+              Explore Our Treatments & Transparent Pricing
             </h2>
             <p className="text-charcoal-700 text-sm font-light leading-relaxed">
-              Explore 148 bespoke treatments covering semi-permanent eyebrows, dermal injectables, skin boosters, fat dissolving, and holistic aesthetics on dedicated pages.
+              From wake-up-ready SPMU brows to Profhilo skin boosters and anti-wrinkle injections — browse 148 bespoke treatments with honest, upfront prices. No hidden costs.
             </p>
           </div>
 
@@ -71,14 +67,14 @@ export default function Home() {
             {/* Services Page Card */}
             <div className="bg-white p-8 sm:p-10 rounded-3xl border border-gold-500/20 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
               <div className="space-y-4">
-                <div className="w-12 h-12 rounded-2xl bg-gold-500/10 text-gold-600 flex items-center justify-center font-serif font-bold text-xl border border-gold-500/20">
+                <div className="w-12 h-12 rounded-2xl bg-gold-500/10 flex items-center justify-center border border-gold-500/20">
                   <ShieldCheck className="w-6 h-6 text-gold-600" />
                 </div>
                 <h3 className="font-serif text-2xl font-bold text-charcoal-900 group-hover:text-gold-600 transition-colors">
-                  Explore Services & Treatments
+                  Services & Treatments
                 </h3>
                 <p className="text-xs text-charcoal-700 font-light leading-relaxed">
-                  Browse our categorized treatment menu including Microblading, Ombré Brows, Lip Fillers, Profhilo, RF Microneedling, and Regim A Facials with interactive procedure details.
+                  Microblading, Ombré Brows, Lip Fillers, Profhilo, RF Microneedling, Regim A Facials — each described in full so you know exactly what to expect.
                 </p>
               </div>
 
@@ -87,7 +83,7 @@ export default function Home() {
                   href="/services"
                   className="bg-charcoal-900 hover:bg-charcoal-800 text-gold-400 font-semibold text-xs uppercase tracking-widest px-7 py-3.5 rounded-full inline-flex items-center space-x-2 shadow-md transition-all group-hover:translate-x-1"
                 >
-                  <span>View Services Catalog</span>
+                  <span>Browse Services</span>
                   <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
@@ -96,14 +92,14 @@ export default function Home() {
             {/* Price Guide Page Card */}
             <div className="bg-white p-8 sm:p-10 rounded-3xl border border-gold-500/20 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
               <div className="space-y-4">
-                <div className="w-12 h-12 rounded-2xl bg-gold-500/10 text-gold-600 flex items-center justify-center font-serif font-bold text-xl border border-gold-500/20">
+                <div className="w-12 h-12 rounded-2xl bg-gold-500/10 flex items-center justify-center border border-gold-500/20">
                   <Tag className="w-6 h-6 text-gold-600" />
                 </div>
                 <h3 className="font-serif text-2xl font-bold text-charcoal-900 group-hover:text-gold-600 transition-colors">
-                  Complete Treatments Price Guide
+                  Full Price Guide
                 </h3>
                 <p className="text-xs text-charcoal-700 font-light leading-relaxed">
-                  View full transparent pricing and treatment durations for all 148 aesthetic procedures, packages, and courses with search filtering.
+                  Clear, itemised pricing for all 148 treatments — including course packages and complimentary touch-up appointments where applicable.
                 </p>
               </div>
 
@@ -112,7 +108,7 @@ export default function Home() {
                   href="/price-guide"
                   className="bg-gradient-to-r from-gold-500 to-bronze-500 hover:from-gold-600 hover:to-gold-700 text-white font-semibold text-xs uppercase tracking-widest px-7 py-3.5 rounded-full inline-flex items-center space-x-2 shadow-md transition-all group-hover:translate-x-1"
                 >
-                  <span>View Full Price List</span>
+                  <span>View Prices</span>
                   <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
@@ -121,22 +117,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Before & After Transformation Showcase */}
+      {/* Before & After – real client transformations */}
       <TransformationGallery />
 
-      {/* Verified Treatwell & Booksy Reviews Section */}
+      {/* Verified Treatwell & Booksy reviews */}
       <ReviewsSection />
 
-      {/* Aftercare Advice & FAQ */}
+      {/* Aftercare advice & FAQ accordion */}
       <AftercareFAQ />
 
-      {/* Location, Opening Hours & Contact */}
+      {/* Location map, opening hours, contact form */}
       <ContactSection />
 
-      {/* Footer */}
+      {/* Footer with newsletter signup */}
       <Footer />
 
-      {/* Interactive Online Appointment Booking Modal */}
+      {/* Booking modal */}
       <BookingModal
         isOpen={bookingOpen}
         onClose={handleCloseBooking}

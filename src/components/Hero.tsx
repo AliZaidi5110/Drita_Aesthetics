@@ -55,7 +55,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
           {/* Right Column: Subtitle & Dual CTA Buttons */}
           <div className="lg:col-span-5 space-y-6 lg:text-left lg:pl-4">
             <p className="font-serif italic text-cream-100 text-sm sm:text-base lg:text-lg leading-relaxed font-light drop-shadow-md">
-              At Drita's Aesthetics, we combine medical precision with aesthetic artistry to enhance your natural structure — never overpower it.
+              Independent aesthetics clinic in Salisbury. We listen first, then treat — using proven injectables, SPMU brows, and skin science to get you results you'll actually love.
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
@@ -92,6 +92,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
           </div>
 
           <div className="flex items-center space-x-4">
+            <a
+              href="tel:+447480233841"
+              className="text-white hover:text-gold-300 transition-colors font-semibold flex items-center space-x-1 text-sm"
+            >
+              <span>+44 7480 233841</span>
+            </a>
+            <span className="text-white/30">|</span>
             <a
               href="https://booksy.com/en-gb/181781_dritas-aesthetics_aesthetic-medicine_1199961_salisbury"
               target="_blank"

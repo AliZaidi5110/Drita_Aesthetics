@@ -24,8 +24,8 @@ export default function PriceGuidePage() {
     <main className="min-h-screen bg-cream-50 flex flex-col">
       <Header onOpenBooking={handleOpenBooking} />
 
-      {/* Page Title Hero Banner */}
-      <div className="bg-[#140A0F] text-white py-16 text-center border-b border-gold-500/20">
+      {/* Page Title Banner — pt-28 clears the fixed navbar height */}
+      <div className="bg-[#140A0F] text-white pt-28 pb-16 text-center border-b border-gold-500/20">
         <div className="max-w-4xl mx-auto px-4">
           <span className="text-xs font-bold uppercase tracking-[0.25em] text-gold-400">
             TRANSPARENT CLINIC PRICING

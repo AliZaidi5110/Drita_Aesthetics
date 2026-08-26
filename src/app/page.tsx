@@ -30,10 +30,10 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-cream-50 flex flex-col">
-      {/* Header & Transparent Top Bar */}
-      <Header onOpenBooking={handleOpenBooking} />
-
       {/* Hero – full-screen pink peony image with floating transparent navbar */}
+      <Header onOpenBooking={handleOpenBooking} hasHeroBackground={true} />
+
+      {/* Hero – full-screen pink peony image */}
       <Hero onOpenBooking={() => handleOpenBooking()} />
 
       {/* Scrolling services marquee */}

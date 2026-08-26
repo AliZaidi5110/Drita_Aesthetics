@@ -21,30 +21,36 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
 
   return (
     <header className="w-full font-sans fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-      {/* Top Announcement Bar - Transparent Overlay */}
-      <div className="bg-black/30 backdrop-blur-sm text-cream-100 text-xs py-2 px-4 border-b border-white/10 hidden md:block">
+      {/* Top Announcement Bar - light on bright hero, hidden on mobile */}
+      <div className={`text-xs py-2 px-4 border-b hidden md:block transition-all duration-300 ${
+        isScrolled
+          ? 'bg-[#140A0F]/90 border-white/10 text-cream-100'
+          : 'bg-rose-50/80 border-rose-100/60 text-charcoal-700'
+      }`}>
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-6">
-            <div className="flex items-center space-x-1.5 text-cream-200 hover:text-gold-300 transition-colors">
-              <MapPin className="w-3.5 h-3.5 text-gold-400" />
+            <div className="flex items-center space-x-1.5 hover:text-rose-600 transition-colors">
+              <MapPin className={`w-3.5 h-3.5 ${isScrolled ? 'text-gold-400' : 'text-rose-500'}`} />
               <span>15 Endless Street, Salisbury, SP1 1DL</span>
             </div>
-            <div className="flex items-center space-x-1.5 text-cream-200">
-              <Clock className="w-3.5 h-3.5 text-gold-400" />
+            <div className="flex items-center space-x-1.5">
+              <Clock className={`w-3.5 h-3.5 ${isScrolled ? 'text-gold-400' : 'text-rose-500'}`} />
               <span>Mon – Sat: 10:00 AM – 5:30 PM</span>
             </div>
           </div>
 
           <div className="flex items-center space-x-5">
-            <div className="flex items-center space-x-1 text-gold-300 font-medium">
-              <Star className="w-3.5 h-3.5 fill-gold-400 text-gold-400" />
+            <div className={`flex items-center space-x-1 font-medium ${isScrolled ? 'text-gold-300' : 'text-rose-600'}`}>
+              <Star className={`w-3.5 h-3.5 ${isScrolled ? 'fill-gold-400 text-gold-400' : 'fill-rose-400 text-rose-400'}`} />
               <span>4.8 / 5.0 Rating</span>
             </div>
             <a
               href="https://booksy.com/en-gb/181781_dritas-aesthetics_aesthetic-medicine_1199961_salisbury"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-1 text-gold-300 hover:text-white transition-colors underline underline-offset-2"
+              className={`flex items-center space-x-1 transition-colors underline underline-offset-2 ${
+                isScrolled ? 'text-gold-300 hover:text-white' : 'text-rose-600 hover:text-rose-800'
+              }`}
             >
               <span>Booksy Profile</span>
               <ExternalLink className="w-3 h-3" />
@@ -53,7 +59,9 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
               href="https://www.treatwell.co.uk/place/drita-s-aesthetics-beauty/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-1 text-gold-300 hover:text-white transition-colors underline underline-offset-2"
+              className={`flex items-center space-x-1 transition-colors underline underline-offset-2 ${
+                isScrolled ? 'text-gold-300 hover:text-white' : 'text-rose-600 hover:text-rose-800'
+              }`}
             >
               <span>Treatwell Verified</span>
               <ExternalLink className="w-3 h-3" />
@@ -62,48 +70,40 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
         </div>
       </div>
 
-      {/* Main Transparent Navigation Bar */}
+      {/* Main Navigation Bar */}
       <div
         className={`w-full transition-all duration-300 ${
           isScrolled
             ? 'bg-[#140A0F]/90 backdrop-blur-md shadow-xl py-3 border-b border-gold-500/20'
-            : 'bg-transparent py-5 border-b border-white/10'
+            : 'bg-white/60 backdrop-blur-sm py-5 border-b border-rose-100/40'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           {/* Brand Logo */}
           <a href="/" className="flex flex-col group">
-            <span className="font-serif text-xl sm:text-2xl font-bold tracking-wider text-white group-hover:text-gold-300 transition-colors drop-shadow-md">
+            <span className={`font-serif text-xl sm:text-2xl font-bold tracking-wider transition-colors drop-shadow-sm group-hover:text-rose-500 ${
+              isScrolled ? 'text-white' : 'text-charcoal-950'
+            }`}>
               DRITA'S
             </span>
-            <span className="text-[10px] sm:text-xs tracking-[0.25em] text-gold-400 uppercase font-semibold">
-              Aesthetics & SPMU Brows
+            <span className={`text-[10px] sm:text-xs tracking-[0.25em] uppercase font-semibold ${
+              isScrolled ? 'text-gold-400' : 'text-rose-500'
+            }`}>
+              Aesthetics &amp; SPMU Brows
             </span>
           </a>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center space-x-8 text-xs sm:text-sm font-semibold tracking-wider uppercase text-white drop-shadow-md">
-            <a href="/#about" className="hover:text-gold-300 transition-colors">
-              ABOUT US
-            </a>
-            <a href="/services" className="hover:text-gold-300 transition-colors">
-              SERVICES
-            </a>
-            <a href="/price-guide" className="hover:text-gold-300 transition-colors">
-              PRICE GUIDE
-            </a>
-            <a href="/#transformations" className="hover:text-gold-300 transition-colors">
-              BEFORE & AFTER
-            </a>
-            <a href="/#reviews" className="hover:text-gold-300 transition-colors">
-              REVIEWS
-            </a>
-            <a href="/#faq" className="hover:text-gold-300 transition-colors">
-              FAQ
-            </a>
-            <a href="/#contact" className="hover:text-gold-300 transition-colors">
-              CONTACT
-            </a>
+          <nav className={`hidden lg:flex items-center space-x-8 text-xs sm:text-sm font-semibold tracking-wider uppercase ${
+            isScrolled ? 'text-white drop-shadow-md' : 'text-charcoal-800'
+          }`}>
+            <a href="/#about" className={`transition-colors ${isScrolled ? 'hover:text-gold-300' : 'hover:text-rose-500'}`}>ABOUT US</a>
+            <a href="/services" className={`transition-colors ${isScrolled ? 'hover:text-gold-300' : 'hover:text-rose-500'}`}>SERVICES</a>
+            <a href="/price-guide" className={`transition-colors ${isScrolled ? 'hover:text-gold-300' : 'hover:text-rose-500'}`}>PRICE GUIDE</a>
+            <a href="/#transformations" className={`transition-colors ${isScrolled ? 'hover:text-gold-300' : 'hover:text-rose-500'}`}>BEFORE &amp; AFTER</a>
+            <a href="/#reviews" className={`transition-colors ${isScrolled ? 'hover:text-gold-300' : 'hover:text-rose-500'}`}>REVIEWS</a>
+            <a href="/#faq" className={`transition-colors ${isScrolled ? 'hover:text-gold-300' : 'hover:text-rose-500'}`}>FAQ</a>
+            <a href="/#contact" className={`transition-colors ${isScrolled ? 'hover:text-gold-300' : 'hover:text-rose-500'}`}>CONTACT</a>
           </nav>
 
           {/* Action CTA Button */}

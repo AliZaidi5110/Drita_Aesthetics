@@ -126,6 +126,16 @@ body {
   animation-play-state: paused;
 }
 
+/* Blinking cursor for typing animation */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 0.9s step-start infinite;
+}
+
 /* Rejuvita Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

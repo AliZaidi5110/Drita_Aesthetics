@@ -1,111 +1,166 @@
 'use client';
 
-import React from 'react';
-import { Sparkles, Calendar, ArrowRight, ExternalLink, ShieldCheck } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Calendar, ArrowRight, ExternalLink, ShieldCheck, Phone } from 'lucide-react';
 
 interface HeroProps {
   onOpenBooking: () => void;
 }
 
+/* ─── Typing animation hook ─── */
+function useTypingEffect(phrases: string[], typingSpeed = 65, pause = 2000) {
+  const [displayed, setDisplayed] = useState('');
+  const [phraseIdx, setPhraseIdx] = useState(0);
+  const [charIdx, setCharIdx] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const current = phrases[phraseIdx];
+
+    if (!deleting && charIdx < current.length) {
+      const t = setTimeout(() => setCharIdx((c) => c + 1), typingSpeed);
+      return () => clearTimeout(t);
+    }
+
+    if (!deleting && charIdx === current.length) {
+      const t = setTimeout(() => setDeleting(true), pause);
+      return () => clearTimeout(t);
+    }
+
+    if (deleting && charIdx > 0) {
+      const t = setTimeout(() => setCharIdx((c) => c - 1), typingSpeed / 2);
+      return () => clearTimeout(t);
+    }
+
+    if (deleting && charIdx === 0) {
+      setDeleting(false);
+      setPhraseIdx((i) => (i + 1) % phrases.length);
+    }
+  }, [charIdx, deleting, phraseIdx, phrases, typingSpeed, pause]);
+
+  useEffect(() => {
+    setDisplayed(phrases[phraseIdx].slice(0, charIdx));
+  }, [charIdx, phraseIdx, phrases]);
+
+  return displayed;
+}
+
+const SLOGANS = [
+  'Refined Beauty. Thoughtfully Designed.',
+  'Your Brows. Your Identity. Perfected.',
+  'Science-Backed. Artistry-Led. Always Natural.',
+  'Confidence Starts With Feeling Like You.',
+];
+
 export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
+  const typedText = useTypingEffect(SLOGANS, 60, 2200);
+
   return (
-    <section className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden bg-charcoal-950 text-white select-none pt-20 sm:pt-28 pb-10">
-      {/* Full-Bleed Background Peony Model Image */}
+    <section className="relative min-h-screen w-full flex flex-col overflow-hidden text-charcoal-900 pt-20 sm:pt-28">
+      {/* ── Full-bleed bright peony background ── */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/images/hero-peony-bg.png"
-          alt="Drita Aesthetics Refined Beauty Pink Peonies"
-          className="w-full h-full object-cover object-center scale-105 transform transition-transform duration-1000"
+          src="/images/hero-peony-bright.jpg"
+          alt="Drita's Aesthetics — natural beauty with pink peonies, Salisbury"
+          className="w-full h-full object-cover object-center"
         />
-        {/* Soft Dark Vignette & Gradient Overlay for Contrast */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/35 to-black/75" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0D] via-transparent to-black/50" />
+        {/*
+          Light, airy gradient overlays:
+          – Left side: soft white fade so text is legible without darkening the image
+          – Bottom: gentle white fade to blend into the next section
+        */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white/85 via-white/40 to-white/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-white/20" />
       </div>
 
-      {/* Main Content Area */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col justify-between">
-        {/* Top Tagline */}
-        <div className="pt-4 sm:pt-6">
-          <div className="inline-flex items-center space-x-2 bg-black/40 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20">
-            <Sparkles className="w-3.5 h-3.5 text-gold-400" />
-            <span className="text-[11px] sm:text-xs uppercase font-bold tracking-[0.25em] text-gold-300">
-              ADVANCED AESTHETIC MEDICINE
+      {/* ── Main content ── */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col justify-between py-8">
+
+        {/* Top kicker pill */}
+        <div>
+          <div className="inline-flex items-center space-x-2 bg-rose-50/90 backdrop-blur-sm px-4 py-1.5 rounded-full border border-rose-200/60 shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-rose-400 animate-pulse" />
+            <span className="text-[11px] sm:text-xs uppercase font-bold tracking-[0.22em] text-rose-600">
+              Aesthetic Clinic · Salisbury SP1 1DL
             </span>
           </div>
         </div>
 
-        {/* Middle & Bottom Grid Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end my-auto py-8">
-          {/* Left Column: Big Headline */}
-          <div className="lg:col-span-7 space-y-4">
-            <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight text-white uppercase leading-[1.05]">
-              REFINED{' '}
-              <span className="font-serif italic font-normal text-gold-300 gold-gradient-text">
-                BEAUTY.
-              </span>
-              <br />
-              THOUGHTFULLY
-              <br />
-              <span className="gold-gradient-text font-serif italic font-normal">
-                DESIGNED.
-              </span>
-            </h1>
-          </div>
+        {/* Centre headline block */}
+        <div className="flex-1 flex flex-col justify-center py-10 max-w-2xl">
+          {/* Static part of the heading */}
+          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.08] text-charcoal-950">
+            Beauty That Feels
+            <span className="block text-rose-500 font-serif italic font-normal">
+              Genuinely Yours.
+            </span>
+          </h1>
 
-          {/* Right Column: Subtitle & Dual CTA Buttons */}
-          <div className="lg:col-span-5 space-y-6 lg:text-left lg:pl-4">
-            <p className="font-serif italic text-cream-100 text-sm sm:text-base lg:text-lg leading-relaxed font-light drop-shadow-md">
-              Independent aesthetics clinic in Salisbury. We listen first, then treat — using proven injectables, SPMU brows, and skin science to get you results you'll actually love.
-            </p>
+          {/* Typing slogan */}
+          <p className="mt-6 text-base sm:text-xl lg:text-2xl font-serif italic text-charcoal-700 leading-snug min-h-[2.5rem]">
+            {typedText}
+            {/* Blinking cursor */}
+            <span className="inline-block w-[2px] h-[1.1em] bg-rose-500 ml-0.5 align-middle animate-blink" />
+          </p>
 
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
-              <button
-                onClick={onOpenBooking}
-                className="bg-[#D92C44] hover:bg-[#B82236] text-white font-semibold text-xs uppercase tracking-widest px-8 py-4 rounded-xl shadow-xl shadow-[#D92C44]/30 hover:shadow-[#D92C44]/50 transition-all duration-300 flex items-center justify-center space-x-2 transform hover:-translate-y-0.5"
-              >
-                <Calendar className="w-4 h-4" />
-                <span>BOOK A CONSULTATION</span>
-              </button>
+          {/* Sub-copy */}
+          <p className="mt-5 text-sm sm:text-base text-charcoal-600 font-light leading-relaxed max-w-lg">
+            Independent aesthetics clinic in Salisbury. We listen first, then treat — using proven injectables, SPMU brows, and skin science to get you results you'll actually love.
+          </p>
 
-              <a
-                href="#about"
-                className="bg-[#EAE3DB]/90 hover:bg-[#EAE3DB] text-charcoal-900 font-semibold text-xs uppercase tracking-widest px-7 py-4 rounded-xl shadow-md transition-all duration-300 flex items-center justify-center space-x-2 backdrop-blur-sm transform hover:-translate-y-0.5"
-              >
-                <span>DISCOVER OUR APPROACH</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </a>
-            </div>
+          {/* CTA buttons */}
+          <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <button
+              onClick={onOpenBooking}
+              className="bg-[#D92C44] hover:bg-[#B82236] text-white font-semibold text-xs uppercase tracking-widest px-8 py-4 rounded-xl shadow-lg shadow-[#D92C44]/30 hover:shadow-[#D92C44]/50 transition-all duration-300 flex items-center justify-center space-x-2 transform hover:-translate-y-0.5"
+            >
+              <Calendar className="w-4 h-4" />
+              <span>BOOK A CONSULTATION</span>
+            </button>
+
+            <a
+              href="#about"
+              className="bg-white/90 hover:bg-white text-charcoal-900 border border-charcoal-200 font-semibold text-xs uppercase tracking-widest px-7 py-4 rounded-xl shadow-sm transition-all duration-300 flex items-center justify-center space-x-2 backdrop-blur-sm transform hover:-translate-y-0.5"
+            >
+              <span>OUR TREATMENTS</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
           </div>
         </div>
 
-        {/* Bottom Trust Badges Bar */}
-        <div className="pt-6 border-t border-white/15 flex flex-wrap items-center justify-between gap-4 text-xs text-cream-200">
-          <div className="flex items-center space-x-6">
-            <div className="flex items-center space-x-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="font-medium text-white">15 Endless Street, Salisbury SP1 1DL</span>
+        {/* Bottom trust bar */}
+        <div className="pt-6 border-t border-charcoal-200/40 flex flex-wrap items-center justify-between gap-4 text-xs text-charcoal-600">
+          <div className="flex flex-wrap items-center gap-5">
+            <div className="flex items-center space-x-1.5 font-medium text-charcoal-800">
+              <ShieldCheck className="w-4 h-4 text-rose-500" />
+              <span>4.8★ Verified · 31+ Treatwell Reviews</span>
             </div>
-            <div className="hidden sm:flex items-center space-x-1 text-gold-300 font-semibold">
-              <ShieldCheck className="w-4 h-4 text-gold-400" />
-              <span>4.8★ Verified on Treatwell & Booksy</span>
-            </div>
+            <a
+              href="tel:+447480233841"
+              className="flex items-center space-x-1.5 font-semibold text-charcoal-900 hover:text-rose-600 transition-colors"
+            >
+              <Phone className="w-3.5 h-3.5 text-rose-500" />
+              <span>+44 7480 233841</span>
+            </a>
           </div>
 
           <div className="flex items-center space-x-4">
             <a
-              href="tel:+447480233841"
-              className="text-white hover:text-gold-300 transition-colors font-semibold flex items-center space-x-1 text-sm"
-            >
-              <span>+44 7480 233841</span>
-            </a>
-            <span className="text-white/30">|</span>
-            <a
               href="https://booksy.com/en-gb/181781_dritas-aesthetics_aesthetic-medicine_1199961_salisbury"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gold-300 hover:text-white transition-colors underline flex items-center space-x-1"
+              className="text-rose-600 hover:text-rose-700 transition-colors underline flex items-center space-x-1 font-medium"
             >
-              <span>Book on Booksy</span>
+              <span>Booksy</span>
+              <ExternalLink className="w-3 h-3" />
+            </a>
+            <a
+              href="https://www.treatwell.co.uk/place/drita-s-aesthetics-beauty/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-rose-600 hover:text-rose-700 transition-colors underline flex items-center space-x-1 font-medium"
+            >
+              <span>Treatwell</span>
               <ExternalLink className="w-3 h-3" />
             </a>
           </div>

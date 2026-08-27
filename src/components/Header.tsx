@@ -127,25 +127,21 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
 
           {/* ── Brand Logo ─────────────────────────────────────────── */}
-          <a href="/" className="flex flex-col group shrink-0">
-            <span
-              className={[
-                'font-serif text-xl sm:text-2xl font-bold tracking-wider',
-                'transition-colors duration-200 drop-shadow group-hover:opacity-75',
-                isSolid ? 'text-white' : 'text-charcoal-950',
-              ].join(' ')}
-            >
-              DRITA'S
-            </span>
-            <span
-              className={[
-                'text-[10px] sm:text-xs tracking-[0.28em] uppercase font-bold',
-                'transition-colors duration-200',
-                isSolid ? 'text-gold-400' : 'text-rose-600',
-              ].join(' ')}
-            >
-              Aesthetics &amp; SPMU Brows
-            </span>
+          <a
+            href="/"
+            className={[
+              'shrink-0 group flex items-center justify-center transition-all duration-300',
+              isSolid
+                ? 'bg-white rounded-xl px-2 py-1 shadow-md'
+                : '',
+            ].join(' ')}
+            aria-label="Drita's Aesthetics & SPMU Brows – Home"
+          >
+            <img
+              src="/images/logo-nav.png"
+              alt="Drita's Aesthetics & SPMU Brows logo"
+              className="h-10 sm:h-12 w-auto object-contain transition-all duration-300 group-hover:opacity-80"
+            />
           </a>
 
           {/* ── Desktop Nav Links ──────────────────────────────────── */}

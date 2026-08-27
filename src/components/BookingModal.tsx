@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
 import { TREATMENTS } from '../data/treatments';
-import { X, Calendar, Clock, CheckCircle2, ChevronRight, User, Phone, Mail, Sparkles, ExternalLink } from 'lucide-react';
+import { X, CheckCircle2, ChevronRight, Sparkles, ExternalLink, Loader2 } from 'lucide-react';
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -19,7 +20,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   const [selectedService, setSelectedService] = useState<string>(
     preselectedService || TREATMENTS[0].name
   );
-  const [selectedDate, setSelectedDate] = useState<string>('2026-08-28');
+  const [selectedDate, setSelectedDate] = useState<string>('');
   const [selectedTime, setSelectedTime] = useState<string>('11:30 AM');
   const [clientInfo, setClientInfo] = useState({
     name: '',
@@ -27,6 +28,8 @@ export const BookingModal: React.FC<BookingModalProps> = ({
     email: '',
     notes: '',
   });
+  const [sending, setSending] = useState(false);
+  const [emailError, setEmailError] = useState<string | null>(null);
 
   useEffect(() => {
     if (preselectedService) {
@@ -255,11 +258,51 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 Back
               </button>
               <button
-                onClick={() => setStep(4)}
-                disabled={!clientInfo.name || !clientInfo.phone}
-                className="w-2/3 bg-gradient-to-r from-gold-500 to-bronze-500 hover:from-gold-600 hover:to-gold-700 text-white text-xs font-semibold py-3 rounded-xl shadow-md uppercase tracking-wider disabled:opacity-50"
+                onClick={async () => {
+                  setSending(true);
+                  setEmailError(null);
+                  try {
+                    const templateParams = {
+                      client_name: clientInfo.name,
+                      client_email: clientInfo.email,
+                      client_phone: clientInfo.phone,
+                      service: currentTreatmentObj.name,
+                      price: currentTreatmentObj.price,
+                      duration: currentTreatmentObj.duration,
+                      date: selectedDate,
+                      time: selectedTime,
+                      notes: clientInfo.notes || 'None',
+                      to_email: 'zydev101@gmail.com',
+                    };
+                    // Send notification to clinic owner
+                    await emailjs.send(
+                      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+                      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_OWNER!,
+                      templateParams,
+                      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+                    );
+                    // Send confirmation to customer (if email provided)
+                    if (clientInfo.email) {
+                      await emailjs.send(
+                        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+                        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_CLIENT!,
+                        { ...templateParams, to_email: clientInfo.email },
+                        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+                      );
+                    }
+                    setStep(4);
+                  } catch (err) {
+                    console.error('EmailJS error:', err);
+                    setEmailError('Could not send confirmation email. Your booking is still noted — we will contact you shortly.');
+                    setStep(4);
+                  } finally {
+                    setSending(false);
+                  }
+                }}
+                disabled={!clientInfo.name || !clientInfo.phone || sending}
+                className="w-2/3 bg-gradient-to-r from-gold-500 to-bronze-500 hover:from-gold-600 hover:to-gold-700 text-white text-xs font-semibold py-3 rounded-xl shadow-md uppercase tracking-wider disabled:opacity-50 flex items-center justify-center space-x-2"
               >
-                Confirm Appointment
+                {sending ? <><Loader2 className="w-4 h-4 animate-spin" /><span>Sending...</span></> : <span>Confirm Appointment</span>}
               </button>
             </div>
           </div>
@@ -273,8 +316,14 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               Appointment Request Reserved!
             </h4>
             <p className="text-xs text-charcoal-700 max-w-md mx-auto leading-relaxed">
-              Thank you, <strong>{clientInfo.name || 'Valued Client'}</strong>! Your appointment request for <strong>{currentTreatmentObj.name}</strong> on <strong>{selectedDate}</strong> at <strong>{selectedTime}</strong> has been logged.
+              Thank you, <strong>{clientInfo.name || 'Valued Client'}</strong>! Your appointment request for <strong>{currentTreatmentObj.name}</strong> on <strong>{selectedDate}</strong> at <strong>{selectedTime}</strong> has been received.
+              {clientInfo.email && <><br /><br />A confirmation email has been sent to <strong>{clientInfo.email}</strong>.</>}
             </p>
+            {emailError && (
+              <p className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 max-w-md mx-auto">
+                ⚠️ {emailError}
+              </p>
+            )}
 
             <div className="bg-cream-50 p-4 rounded-2xl border border-gold-500/20 text-xs text-left max-w-md mx-auto space-y-1 text-charcoal-700">
               <p>📍 <strong>Location:</strong> 15 Endless Street, Salisbury, SP1 1DL</p>

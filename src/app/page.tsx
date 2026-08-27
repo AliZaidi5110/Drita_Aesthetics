@@ -6,6 +6,7 @@ import { Hero } from '../components/Hero';
 import { MarqueeTicker } from '../components/MarqueeTicker';
 import { DestinationSection } from '../components/DestinationSection';
 import { AboutSection } from '../components/AboutSection';
+import { MeetTheOwner } from '../components/MeetTheOwner';
 import { TransformationGallery } from '../components/TransformationGallery';
 import { ReviewsSection } from '../components/ReviewsSection';
 import { AftercareFAQ } from '../components/AftercareFAQ';
@@ -44,6 +45,9 @@ export default function Home() {
 
       {/* Practitioner story & clinical pillars */}
       <AboutSection onOpenBooking={() => handleOpenBooking()} />
+
+      {/* Meet the Owner – owner portrait, story, and credentials */}
+      <MeetTheOwner onOpenBooking={() => handleOpenBooking()} />
 
       {/* Services & price guide quick-links */}
       <section className="py-20 bg-gradient-to-b from-cream-50 to-cream-100 border-y border-gold-500/20">

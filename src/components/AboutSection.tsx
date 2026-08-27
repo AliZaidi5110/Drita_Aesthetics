@@ -17,18 +17,18 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenBooking }) => 
             <div className="relative">
               <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-4 border-white relative z-10">
                 <img
-                  src="/images/84-profile-2.webp"
-                  alt="Drita Aesthetics Clinic Atmosphere & Eyebrow Styling"
+                  src="/images/clinic-storefront.jpg"
+                  alt="Drita's Aesthetics &amp; Beauty – 15 Endless Street, Salisbury"
                   className="w-full h-full object-cover object-top"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/70 via-transparent to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6 text-white">
                   <span className="text-xs uppercase tracking-widest text-gold-400 font-semibold">
-                    Salisbury Aesthetic Specialist
+                    15 Endless Street · Salisbury SP1 1DL
                   </span>
-                  <h3 className="font-serif text-2xl font-bold mt-1">Drita's Clinical Philosophy</h3>
+                  <h3 className="font-serif text-2xl font-bold mt-1">Drita's Aesthetics & Beauty</h3>
                   <p className="text-xs text-cream-200 mt-1 font-light">
-                    "True beauty lies in enhancing your natural contours with subtle precision and clinical care."
+                    Mon – Sat: 10:00 AM – 5:30 PM
                   </p>
                 </div>
               </div>
@@ -62,12 +62,12 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenBooking }) => 
               <span className="text-xs uppercase tracking-widest text-charcoal-600 font-semibold block mb-3">
                 Credentials & Hygiene Standards You Can Trust:
               </span>
-              <div className="flex flex-wrap items-center gap-4 bg-white p-4 rounded-2xl border border-gold-500/20 shadow-sm">
-                <img src="/images/84-credentials-1.webp" alt="Save Face Accreditation – UK Aesthetic Safety Regulator" className="h-8 object-contain opacity-80 hover:opacity-100 transition-opacity" />
-                <img src="/images/84-credentials-2.webp" alt="Wiltshire Council Hygiene & Safety Rating" className="h-8 object-contain opacity-80 hover:opacity-100 transition-opacity" />
-                <img src="/images/84-credentials-3.webp" alt="Level 4 Micropigmentation Qualification – Accredited Training Body" className="h-8 object-contain opacity-80 hover:opacity-100 transition-opacity" />
-                <img src="/images/84-credentials-4.webp" alt="Professional Insurance – Insured Aesthetic Practitioner" className="h-8 object-contain opacity-80 hover:opacity-100 transition-opacity" />
-                <img src="/images/84-credentials-5.webp" alt="Treatwell Verified Salon Partner" className="h-8 object-contain opacity-80 hover:opacity-100 transition-opacity" />
+              <div className="flex flex-wrap items-center gap-4 p-4 rounded-2xl border border-gold-500/20 shadow-sm" style={{ backgroundColor: '#140A0F' }}>
+                <img src="/images/84-credentials-1.webp" alt="Save Face Accreditation – UK Aesthetic Safety Regulator" className="h-8 object-contain opacity-80 hover:opacity-100 transition-opacity brightness-110" />
+                <img src="/images/84-credentials-2.webp" alt="Wiltshire Council Hygiene & Safety Rating" className="h-8 object-contain opacity-80 hover:opacity-100 transition-opacity brightness-110" />
+                <img src="/images/84-credentials-3.webp" alt="Level 4 Micropigmentation Qualification – Accredited Training Body" className="h-8 object-contain opacity-80 hover:opacity-100 transition-opacity brightness-110" />
+                <img src="/images/84-credentials-4.webp" alt="Professional Insurance – Insured Aesthetic Practitioner" className="h-8 object-contain opacity-80 hover:opacity-100 transition-opacity brightness-110" />
+                <img src="/images/84-credentials-5.webp" alt="Treatwell Verified Salon Partner" className="h-8 object-contain opacity-80 hover:opacity-100 transition-opacity brightness-110" />
               </div>
             </div>
 

@@ -5,21 +5,88 @@ import emailjs from '@emailjs/browser';
 import { TREATMENTS } from '../data/treatments';
 import { X, CheckCircle2, ChevronRight, Sparkles, ExternalLink, Loader2 } from 'lucide-react';
 
+export type DiscountType = 'none' | 'student' | 'nhs' | 'military';
+
+export interface DiscountOption {
+  id: DiscountType;
+  label: string;
+  percent: number;
+  badge: string;
+  icon: string;
+  note: string;
+}
+
+export const DISCOUNT_OPTIONS: DiscountOption[] = [
+  {
+    id: 'none',
+    label: 'Standard Rate',
+    percent: 0,
+    badge: 'Standard',
+    icon: '✨',
+    note: 'Standard clinic investment',
+  },
+  {
+    id: 'student',
+    label: 'Student Discount',
+    percent: 10,
+    badge: '10% OFF',
+    icon: '🎓',
+    note: 'Valid Student ID card required at appointment',
+  },
+  {
+    id: 'nhs',
+    label: 'NHS & Healthcare',
+    percent: 20,
+    badge: '20% OFF',
+    icon: '💙',
+    note: 'Valid NHS Staff ID or Blue Light Card required at appointment',
+  },
+  {
+    id: 'military',
+    label: 'Armed Forces / Army',
+    percent: 20,
+    badge: '20% OFF',
+    icon: '🎖️',
+    note: 'Valid MOD Defence or Military Service ID required at appointment',
+  },
+];
+
+export function calculateDiscount(priceStr: string, percent: number) {
+  const match = priceStr.match(/(\d+(\.\d+)?)/);
+  if (!match || percent <= 0) {
+    return { original: priceStr, final: priceStr, savings: '£0', isDiscounted: false };
+  }
+  const numeric = parseFloat(match[1]);
+  const savingsNum = (numeric * percent) / 100;
+  const finalNum = numeric - savingsNum;
+  const finalFormatted = Number.isInteger(finalNum) ? `£${finalNum}` : `£${finalNum.toFixed(2)}`;
+  const savingsFormatted = Number.isInteger(savingsNum) ? `£${savingsNum}` : `£${savingsNum.toFixed(2)}`;
+  return {
+    original: priceStr,
+    final: finalFormatted,
+    savings: savingsFormatted,
+    isDiscounted: true,
+  };
+}
+
 interface BookingModalProps {
   isOpen: boolean;
   onClose: () => void;
   preselectedService?: string;
+  preselectedDiscount?: DiscountType;
 }
 
 export const BookingModal: React.FC<BookingModalProps> = ({
   isOpen,
   onClose,
   preselectedService,
+  preselectedDiscount = 'none',
 }) => {
   const [step, setStep] = useState<1 | 2 | 3 | 4>(1);
   const [selectedService, setSelectedService] = useState<string>(
     preselectedService || TREATMENTS[0].name
   );
+  const [discountType, setDiscountType] = useState<DiscountType>(preselectedDiscount);
   const [selectedDate, setSelectedDate] = useState<string>('');
   const [selectedTime, setSelectedTime] = useState<string>('11:30 AM');
   const [clientInfo, setClientInfo] = useState({
@@ -37,10 +104,21 @@ export const BookingModal: React.FC<BookingModalProps> = ({
     }
   }, [preselectedService]);
 
+  useEffect(() => {
+    if (preselectedDiscount) {
+      setDiscountType(preselectedDiscount);
+    }
+  }, [preselectedDiscount]);
+
   if (!isOpen) return null;
 
   const currentTreatmentObj =
     TREATMENTS.find((t) => t.name === selectedService) || TREATMENTS[0];
+
+  const currentDiscountObj =
+    DISCOUNT_OPTIONS.find((d) => d.id === discountType) || DISCOUNT_OPTIONS[0];
+
+  const pricing = calculateDiscount(currentTreatmentObj.price, currentDiscountObj.percent);
 
   const availableTimeSlots = [
     '10:00 AM',
@@ -92,35 +170,80 @@ export const BookingModal: React.FC<BookingModalProps> = ({
           </div>
         </div>
 
-        {/* STEP 1: Select Treatment */}
+        {/* STEP 1: Select Treatment & Concession */}
         {step === 1 && (
           <div className="space-y-4">
-            <label className="block text-xs font-semibold text-charcoal-800">
-              Select Your Preferred Service:
-            </label>
-            <div className="max-h-60 overflow-y-auto space-y-2 pr-1">
-              {TREATMENTS.map((t) => (
-                <div
-                  key={t.id}
-                  onClick={() => setSelectedService(t.name)}
-                  className={`p-3.5 rounded-2xl border cursor-pointer transition-all flex items-center justify-between ${
-                    selectedService === t.name
-                      ? 'border-gold-500 bg-gold-50/60 shadow-sm'
-                      : 'border-cream-200 hover:border-gold-300'
-                  }`}
-                >
-                  <div>
-                    <h4 className="font-serif font-bold text-charcoal-900 text-sm">{t.name}</h4>
-                    <p className="text-[11px] text-charcoal-600 font-light">{t.duration} • {t.categoryLabel}</p>
+            <div>
+              <label className="block text-xs font-semibold text-charcoal-800 mb-2">
+                Select Your Preferred Service:
+              </label>
+              <div className="max-h-52 overflow-y-auto space-y-2 pr-1">
+                {TREATMENTS.map((t) => (
+                  <div
+                    key={t.id}
+                    onClick={() => setSelectedService(t.name)}
+                    className={`p-3 rounded-2xl border cursor-pointer transition-all flex items-center justify-between ${
+                      selectedService === t.name
+                        ? 'border-gold-500 bg-gold-50/60 shadow-sm'
+                        : 'border-cream-200 hover:border-gold-300'
+                    }`}
+                  >
+                    <div>
+                      <h4 className="font-serif font-bold text-charcoal-900 text-sm">{t.name}</h4>
+                      <p className="text-[11px] text-charcoal-600 font-light">{t.duration} • {t.categoryLabel}</p>
+                    </div>
+                    <span className="font-serif font-bold text-gold-600 text-sm">{t.price}</span>
                   </div>
-                  <span className="font-serif font-bold text-gold-600 text-sm">{t.price}</span>
+                ))}
+              </div>
+            </div>
+
+            {/* Concession / Discount Selector */}
+            <div className="pt-1">
+              <label className="block text-xs font-semibold text-charcoal-800 mb-1.5 flex items-center justify-between">
+                <span>Special Concession / Discount:</span>
+                <span className="text-[10px] text-gold-600 font-bold uppercase tracking-wider">ID Required at Clinic</span>
+              </label>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                {DISCOUNT_OPTIONS.map((d) => (
+                  <button
+                    key={d.id}
+                    type="button"
+                    onClick={() => setDiscountType(d.id)}
+                    className={`p-2 rounded-xl text-left border transition-all flex flex-col justify-between ${
+                      discountType === d.id
+                        ? 'border-gold-500 bg-charcoal-900 text-gold-400 shadow-md ring-1 ring-gold-400'
+                        : 'border-bronze-200/80 bg-cream-50/60 hover:bg-gold-50/50 text-charcoal-800'
+                    }`}
+                  >
+                    <div className="flex items-center space-x-1">
+                      <span className="text-xs">{d.icon}</span>
+                      <span className="text-[11px] font-bold tracking-tight truncate">{d.badge}</span>
+                    </div>
+                    <span className={`text-[10px] block mt-1 truncate ${discountType === d.id ? 'text-cream-200' : 'text-charcoal-600'}`}>
+                      {d.id === 'none' ? 'Regular' : d.id === 'student' ? 'Student' : d.id === 'nhs' ? 'NHS / Blue Light' : 'Army / Military'}
+                    </span>
+                  </button>
+                ))}
+              </div>
+
+              {pricing.isDiscounted && (
+                <div className="mt-2.5 p-2.5 rounded-xl bg-emerald-50 border border-emerald-200/80 text-[11px] text-emerald-900 flex items-center justify-between">
+                  <div className="flex items-center space-x-1.5">
+                    <span className="text-sm">{currentDiscountObj.icon}</span>
+                    <span><strong>{currentDiscountObj.label} ({currentDiscountObj.badge})</strong> applied!</span>
+                  </div>
+                  <div className="text-right font-serif">
+                    <span className="line-through text-charcoal-600 mr-1.5 text-[10px]">{pricing.original}</span>
+                    <strong className="text-emerald-700 font-bold text-xs">{pricing.final}</strong>
+                  </div>
                 </div>
-              ))}
+              )}
             </div>
 
             <button
               onClick={() => setStep(2)}
-              className="w-full mt-4 bg-gradient-to-r from-gold-500 to-bronze-500 text-white font-semibold py-3 rounded-xl shadow-md text-xs uppercase tracking-wider flex items-center justify-center space-x-2"
+              className="w-full mt-2 bg-gradient-to-r from-gold-500 to-bronze-500 text-white font-semibold py-3 rounded-xl shadow-md text-xs uppercase tracking-wider flex items-center justify-center space-x-2 hover:from-gold-600 hover:to-gold-700 transition-all"
             >
               <span>Continue to Schedule</span>
               <ChevronRight className="w-4 h-4" />
@@ -166,10 +289,20 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               </div>
             </div>
 
-            <div className="bg-cream-50 p-4 rounded-2xl border border-gold-500/20 text-xs space-y-1">
+            <div className="bg-cream-50 p-4 rounded-2xl border border-gold-500/20 text-xs space-y-1.5">
               <span className="font-semibold text-charcoal-900 block">Selected Summary:</span>
-              <p className="text-charcoal-700">{currentTreatmentObj.name} ({currentTreatmentObj.price})</p>
-              <p className="text-gold-700 font-medium">{selectedDate} at {selectedTime}</p>
+              <div className="flex justify-between items-center text-charcoal-700">
+                <span>{currentTreatmentObj.name}</span>
+                <span className="font-serif font-bold text-gold-600">
+                  {pricing.isDiscounted ? `${pricing.final} (${currentDiscountObj.badge})` : currentTreatmentObj.price}
+                </span>
+              </div>
+              <p className="text-gold-700 font-medium">{selectedDate || 'Select Date'} at {selectedTime}</p>
+              {pricing.isDiscounted && (
+                <p className="text-[11px] text-emerald-800 font-medium pt-0.5">
+                  ✓ {currentDiscountObj.label} ({currentDiscountObj.percent}% OFF) · Save {pricing.savings}
+                </p>
+              )}
             </div>
 
             <div className="flex space-x-3">
@@ -250,6 +383,29 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               />
             </div>
 
+            {/* Summary Price Badge */}
+            <div className="p-3 bg-cream-50 rounded-xl border border-gold-500/20 flex items-center justify-between text-xs">
+              <div>
+                <span className="font-semibold text-charcoal-900 block">{currentTreatmentObj.name}</span>
+                <span className="text-[11px] text-charcoal-600">
+                  {selectedDate || 'Date TBD'} · {selectedTime}
+                  {pricing.isDiscounted && ` · ${currentDiscountObj.label} (${currentDiscountObj.badge})`}
+                </span>
+              </div>
+              <div className="text-right">
+                <span className="font-serif font-bold text-sm text-gold-600 block">{pricing.final}</span>
+                {pricing.isDiscounted && (
+                  <span className="text-[10px] text-emerald-700 font-semibold">Save {pricing.savings}</span>
+                )}
+              </div>
+            </div>
+
+            {pricing.isDiscounted && (
+              <p className="text-[11px] text-amber-800 bg-amber-50/80 border border-amber-200 rounded-lg p-2 leading-tight">
+                ⚠️ <strong>Note:</strong> Please bring your valid <strong>{currentDiscountObj.label} ID</strong> card with you to the clinic to receive this {currentDiscountObj.percent}% discount.
+              </p>
+            )}
+
             <div className="flex space-x-3 pt-2">
               <button
                 onClick={() => setStep(2)}
@@ -267,11 +423,21 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                       client_email: clientInfo.email,
                       client_phone: clientInfo.phone,
                       service: currentTreatmentObj.name,
-                      price: currentTreatmentObj.price,
+                      price: pricing.isDiscounted
+                        ? `${pricing.final} (${currentTreatmentObj.price} with ${currentDiscountObj.label} - ${currentDiscountObj.percent}% OFF)`
+                        : currentTreatmentObj.price,
                       duration: currentTreatmentObj.duration,
                       date: selectedDate,
                       time: selectedTime,
-                      notes: clientInfo.notes || 'None',
+                      discount_type: currentDiscountObj.label,
+                      discount_percent: `${currentDiscountObj.percent}%`,
+                      discount_savings: pricing.savings,
+                      final_price: pricing.final,
+                      notes: `${clientInfo.notes || 'None'}${
+                        pricing.isDiscounted
+                          ? ` [Discount: ${currentDiscountObj.label} (${currentDiscountObj.percent}% OFF) - ${currentDiscountObj.note}]`
+                          : ''
+                      }`,
                       to_email: 'dritasbeauty@yahoo.co.uk',
                     };
                     // Send notification to clinic owner
@@ -325,10 +491,22 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               </p>
             )}
 
-            <div className="bg-cream-50 p-4 rounded-2xl border border-gold-500/20 text-xs text-left max-w-md mx-auto space-y-1 text-charcoal-700">
+            <div className="bg-cream-50 p-4 rounded-2xl border border-gold-500/20 text-xs text-left max-w-md mx-auto space-y-1.5 text-charcoal-700">
               <p>📍 <strong>Location:</strong> 15 Endless Street, Salisbury, SP1 1DL</p>
               <p>⏱️ <strong>Duration:</strong> {currentTreatmentObj.duration}</p>
-              <p>💷 <strong>Investment:</strong> {currentTreatmentObj.price}</p>
+              <div className="flex justify-between items-center">
+                <span>💷 <strong>Investment:</strong> {pricing.final}</span>
+                {pricing.isDiscounted && (
+                  <span className="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full border border-emerald-300">
+                    {currentDiscountObj.badge} ({currentDiscountObj.label})
+                  </span>
+                )}
+              </div>
+              {pricing.isDiscounted && (
+                <p className="text-[11px] text-amber-800 bg-amber-50 p-2 rounded-lg border border-amber-200 mt-1">
+                  🎓/💙/🎖️ <strong>Reminder:</strong> Please present your valid {currentDiscountObj.label} ID when you arrive for your appointment.
+                </p>
+              )}
             </div>
 
             <div className="pt-2 flex flex-col space-y-2">

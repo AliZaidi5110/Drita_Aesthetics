@@ -5,6 +5,7 @@ import { Sparkles, Star, ShieldCheck, Award, Heart, Leaf } from 'lucide-react';
 
 const TICKER_ITEMS = [
   { text: 'TAILORED SPMU BROW MAPPING', icon: Sparkles },
+  { text: '10% STUDENT & 20% NHS / FORCES DISCOUNT', icon: Award },
   { text: 'ANTI-WRINKLE INJECTIONS', icon: ShieldCheck },
   { text: 'PROFHILO SKIN BOOSTERS', icon: Award },
   { text: '4.8★ VERIFIED TREATWELL SALON', icon: Star },

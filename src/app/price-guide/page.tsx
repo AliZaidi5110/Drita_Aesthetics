@@ -4,20 +4,23 @@ import React, { useState } from 'react';
 import { Header } from '../../components/Header';
 import { PriceGuide } from '../../components/PriceGuide';
 import { Footer } from '../../components/Footer';
-import { BookingModal } from '../../components/BookingModal';
+import { BookingModal, DiscountType } from '../../components/BookingModal';
 
 export default function PriceGuidePage() {
   const [bookingOpen, setBookingOpen] = useState(false);
   const [bookingService, setBookingService] = useState<string | undefined>(undefined);
+  const [bookingDiscount, setBookingDiscount] = useState<DiscountType>('none');
 
-  const handleOpenBooking = (serviceName?: string) => {
+  const handleOpenBooking = (serviceName?: string, discount: DiscountType = 'none') => {
     setBookingService(serviceName);
+    setBookingDiscount(discount);
     setBookingOpen(true);
   };
 
   const handleCloseBooking = () => {
     setBookingOpen(false);
     setBookingService(undefined);
+    setBookingDiscount('none');
   };
 
   return (
@@ -34,7 +37,7 @@ export default function PriceGuidePage() {
             Treatments Price Guide
           </h1>
           <p className="text-cream-200 text-sm font-light mt-3 max-w-xl mx-auto">
-            View our complete 148 treatment price list with clear pricing, procedure durations, and booking options.
+            View our complete 148 treatment price list with clear pricing, procedure durations, and exclusive 10% Student & 20% NHS/Forces discounts.
           </p>
         </div>
       </div>
@@ -47,6 +50,7 @@ export default function PriceGuidePage() {
         isOpen={bookingOpen}
         onClose={handleCloseBooking}
         preselectedService={bookingService}
+        preselectedDiscount={bookingDiscount}
       />
     </main>
   );

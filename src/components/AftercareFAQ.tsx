@@ -41,6 +41,12 @@ const FAQS: FAQItem[] = [
     question: 'What should I avoid after a Chemical Peel or Skin Booster?',
     answer: 'Always wear broad-spectrum SPF 50 sun protection daily. Avoid active skincare acids (AHAs, BHAs, Retinols) for 5-7 days and allow any micro-peeling to slough off naturally without picking.',
   },
+  {
+    id: 'faq-6',
+    category: 'Concessions & Offers',
+    question: 'Do you offer Student, NHS, or Armed Forces discounts?',
+    answer: 'Yes! Drita\'s Aesthetics proudly offers exclusive concessions to support our community: 10% OFF for Students (with valid Student ID) and 20% OFF for NHS Staff and Armed Forces / Military personnel (with valid NHS or MOD Defence ID). Discounts can be selected during online booking and will be verified upon arrival at the clinic.',
+  },
 ];
 
 export const AftercareFAQ: React.FC = () => {

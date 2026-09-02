@@ -105,21 +105,13 @@ export const Footer: React.FC = () => {
 
             {/* Centre: Brand Emblem */}
             <div className="flex flex-col items-center justify-center space-y-3">
-              <div className="w-14 h-14 flex items-center justify-center">
-                <svg className="w-12 h-12 text-gold-400" viewBox="0 0 100 100" fill="currentColor">
-                  <path d="M50 0 C60 25 75 40 100 50 C75 60 60 75 50 100 C40 75 25 60 0 50 C25 40 40 25 50 0 Z" opacity="0.85" />
-                  <circle cx="50" cy="50" r="12" fill="none" stroke="currentColor" strokeWidth="4" />
-                </svg>
-              </div>
-              <div className="text-center">
-                <span className="font-serif text-2xl font-bold tracking-[0.2em] text-white block">
-                  DRITA'S
-                </span>
-                {/* Fixed: was "AESTHETICS & BEAUTY" – corrected to match brand name everywhere */}
-                <span className="text-[10px] tracking-[0.3em] text-gold-400 uppercase font-semibold block mt-0.5">
-                  AESTHETICS & SPMU BROWS
-                </span>
-              </div>
+              <a href="/" className="inline-block transition-transform hover:scale-105 duration-300">
+                <img
+                  src="/images/logo-drita.png"
+                  alt="Drita's Aesthetics & SPMU Brows"
+                  className="h-20 sm:h-24 w-auto object-contain mx-auto filter drop-shadow-lg"
+                />
+              </a>
             </div>
 
             {/* Right: Contact */}

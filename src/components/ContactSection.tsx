@@ -21,7 +21,7 @@ export const ContactSection: React.FC = () => {
     const body = encodeURIComponent(
       `Name: ${form.name}\nPhone: ${form.phone}\nEmail: ${form.email}\nService: ${form.service}\n\nMessage:\n${form.message}`
     );
-    window.open(`mailto:info@dritasaesthetics.co.uk?subject=${subject}&body=${body}`, '_blank');
+    window.open(`mailto:dritasbeauty@yahoo.co.uk?subject=${subject}&body=${body}`, '_blank');
     setSubmitted(true);
   };
 

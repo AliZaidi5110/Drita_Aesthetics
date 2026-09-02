@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Drita's Aesthetics & SPMU Brows" }],
   // Point canonical to our own Vercel domain (not Treatwell).
   // When a custom domain is confirmed, replace this URL.
-  metadataBase: new URL('https://drita-aesthetics.vercel.app'),
+  metadataBase: new URL('https://www.dritasaesthetics.co.uk'),
   alternates: {
     canonical: '/',
   },
@@ -30,8 +30,7 @@ export const metadata: Metadata = {
     title: "Drita's Aesthetics & SPMU Brows | Aesthetic Clinic Salisbury",
     description:
       "Bespoke eyebrow mapping, lip augmentation, skin boosters, and anti-wrinkle injections at 15 Endless Street, Salisbury. 4.8★ rated · 31+ verified Treatwell reviews.",
-    // Fixed: was pointing to Treatwell listing — now our own site
-    url: 'https://drita-aesthetics.vercel.app',
+    url: 'https://www.dritasaesthetics.co.uk',
     siteName: "Drita's Aesthetics & SPMU Brows",
     locale: 'en_GB',
     type: 'website',

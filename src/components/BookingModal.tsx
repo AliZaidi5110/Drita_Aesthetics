@@ -272,7 +272,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                       date: selectedDate,
                       time: selectedTime,
                       notes: clientInfo.notes || 'None',
-                      to_email: 'zydev101@gmail.com',
+                      to_email: 'dritasbeauty@yahoo.co.uk',
                     };
                     // Send notification to clinic owner
                     await emailjs.send(

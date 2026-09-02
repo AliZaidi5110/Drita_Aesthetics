@@ -109,7 +109,7 @@ export const Footer: React.FC = () => {
                 <img
                   src="/images/logo-drita.png"
                   alt="Drita's Aesthetics & SPMU Brows"
-                  className="h-20 sm:h-24 w-auto object-contain mx-auto filter drop-shadow-lg"
+                  className="h-28 sm:h-36 lg:h-44 w-auto object-contain mx-auto filter drop-shadow-xl"
                 />
               </a>
             </div>

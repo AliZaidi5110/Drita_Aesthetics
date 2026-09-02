@@ -129,13 +129,16 @@ export const Header: React.FC<HeaderProps> = ({
           {/* ── Brand Logo ─────────────────────────────────────────── */}
           <a
             href="/"
-            className="shrink-0 group flex items-center justify-center transition-all duration-300"
+            className="shrink-0 group flex items-center justify-center transition-all duration-300 py-1"
             aria-label="Drita's Aesthetics & SPMU Brows – Home"
           >
             <img
               src="/images/logo-drita.png"
               alt="Drita's Aesthetics & SPMU Brows logo"
-              className="h-10 sm:h-12 w-auto object-contain transition-all duration-300 group-hover:opacity-90 group-hover:scale-105"
+              className={[
+                'w-auto object-contain transition-all duration-300 group-hover:opacity-95 group-hover:scale-105 filter drop-shadow-md',
+                isSolid ? 'h-12 sm:h-14 lg:h-16' : 'h-16 sm:h-20 lg:h-24',
+              ].join(' ')}
             />
           </a>
 

@@ -74,17 +74,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
       </div>
 
       {/* ── Main content ── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col justify-between py-8">
-
-        {/* Top kicker pill */}
-        <div>
-          <div className="inline-flex items-center space-x-2 bg-rose-50/90 backdrop-blur-sm px-4 py-1.5 rounded-full border border-rose-200/60 shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-rose-400 animate-pulse" />
-            <span className="text-[11px] sm:text-xs uppercase font-bold tracking-[0.22em] text-rose-600">
-              Aesthetic Clinic · Salisbury SP1 1DL
-            </span>
-          </div>
-        </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col justify-center py-8">
 
         {/* Centre headline block */}
         <div className="flex-1 flex flex-col justify-center py-10 max-w-2xl">
